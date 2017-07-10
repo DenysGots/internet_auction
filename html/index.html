@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="ru" class="html">
+
+<head class="head">
+    <title>Online Auction</title>
+	
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../styles/styles-main.css" rel="stylesheet" type="text/css"> 
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">  	
+
+	<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Fondamento|Tangerine:700" rel="stylesheet"> 
+	
+	<script async src="../scripts/scripts-main.js"></script>
+</head>
+
+<body class="body"> 
+
+<section class="landing-page display-visible interactive"> 
+	
+		<div class="landing-page_parallax_1">
+			
+			<div class="landing-page_carousel">
+				
+				<div class="landing-page_carousel_image1 landing-page_slides landing-page_slide_showing">
+				</div>
+				
+				<div class="landing-page_carousel_image2 landing-page_slides">
+				</div>
+				
+				<div class="landing-page_carousel_image3 landing-page_slides">
+				</div>
+
+			</div> 
+			
+			<div class="landing-page_left-scroll"> 
+				<button type="button" class="landing-page_left-scroll_button">
+				</button> 
+			</div> 
+			
+			<div class="landing-page_information">
+				<div class="landing-page_logo">
+					<div class="lpl_1">
+						Online
+					</div> 
+					<div class="lpl_2">
+						Auction
+					</div> 
+				</div> 
+				
+				<div class="landing-page_button-container">
+					<button type="submit" class="button landing-page_button"> 
+						Перейти к покупкам! 
+					</button> 
+				</div> 
+			</div> 
+			
+			<div class="landing-page_right-scroll">
+				<button type="button" class="landing-page_right-scroll_button">
+				</button> 
+			</div> 
+		
+		</div> 
+		
+		<div class="landing-page_separation-block">
+		</div> 
+		
+		<div class="landing-page_parallax_2">
+		</div> 
+		
+		<div class="landing-page_separation-block">
+		</div> 
+		
+		<div class="landing-page_parallax_3">
+		</div> 
+	
+</section> 
+
+
+<div class="main display-hidden interactive"> 
+	
+	<header class="header interactive"> 
+	
+		<nav class="header_navigation header_navigation_signed-out interactive">
+
+			<button type="button" class="header_button contacts-button">
+				Контакты 
+			</button>
+
+			<button type="button" class="header_button sign-in-button">
+				Войти 
+			</button>
+
+			<button type="button" class="header_button register-button">
+				Регистрация 
+			</button>
+	
+		</nav> 
+		
+		
+		<nav class="header_navigation header_navigation_signed-in display-hidden interactive">
+
+			<button type="button" class="header_button contacts-button">
+				Контакты 
+			</button>
+
+			<button type="button" class="header_button user-profile-button">
+				Профиль 
+			</button>
+
+			<button type="button" class="header_button user-log-out-button">
+				Выйти 
+			</button>
+	
+		</nav>
+		
+		
+		<div class="header_search display-hidden interactive">
+	
+			<div class="header_logo">
+				Online <br> 
+				Auction
+			</div>
+			
+			<form class="header_search_form"> 
+			
+				<input type="text" class="header_search_text-field" placeholder="Поиск по наименованиям . . ."> 
+				
+				<select class="header_search_options" title="Выберите категорию товаров для поиска"> 
+				
+					<option selected="selected" value="0">
+						Все категории
+					</option> 
+					
+					<option value="1">
+						Монеты и медали
+					</option> 
+					
+					<option value="2">
+						Старинные книги
+					</option> 
+					
+					<option value="3">
+						Антиквариат
+					</option> 
+					
+					<option value="4">
+						Картины
+					</option> 
+					
+					<option value="5">
+						Почтовые марки 
+					</option> 
+				
+				</select> 
+				
+				<button type="submit" class="button"> 
+					Поиск
+				</button> 
+				
+			</form> 
+		
+		</div> 
+				
+	</header> 
+	
+	<section class="main-page display-hidden interactive"> 
+	
+		<aside class="filters-list filters-list_closed display-hidden interactive"> 
+		
+			<div class="filters-list_filters">
+				
+				<form class="filters-list_country"> 			
+					<div class="filters-list_headings">
+						Страна происхождения
+					</div> 
+					
+					<div> 
+						<input type="checkbox" id="England" value="England" class="checkbox"> 
+						<label for="England" class="checkbox_label">Англия</label> <br>
+						
+						<input type="checkbox" id="Germany" value="Germany" class="checkbox"> 
+						<label for="Germany" class="checkbox_label">Германия</label> <br>
+						
+						<input type="checkbox" id="Russia" value="Russia" class="checkbox"> 
+						<label for="Russia" class="checkbox_label">Россия</label> <br>
+						
+						<input type="checkbox" id="Austria" value="Austria" class="checkbox"> 
+						<label for="Austria" class="checkbox_label">Австрия</label> <br>
+						
+						<input type="checkbox" id="USSR" value="USSR" class="checkbox"> 
+						<label for="USSR" class="checkbox_label">СССР</label> <br>
+						
+						<input type="checkbox" id="Liberia" value="Liberia" class="checkbox"> 
+						<label for="Liberia" class="checkbox_label">Либерия</label> <br>
+						
+						<input type="checkbox" id="Malaysia" value="Malaysia" class="checkbox"> 
+						<label for="Malaysia" class="checkbox_label">Малайзия</label> <br>
+						
+						<input type="checkbox" id="Europe" value="Europe" class="checkbox"> 
+						<label for="Europe" class="checkbox_label">Европа</label> <br> 
+						
+						<input type="checkbox" id="USA" value="USA" class="checkbox"> 
+						<label for="USA" class="checkbox_label">США</label> <br> 
+						
+						<input type="checkbox" id="Japan" value="Japan" class="checkbox"> 
+						<label for="Japan" class="checkbox_label">Япония</label> <br> 
+
+						<input type="checkbox" id="Australia" value="Australia" class="checkbox"> 
+						<label for="Australia" class="checkbox_label">Австралия</label> <br> 
+
+						<input type="checkbox" id="San-Marino" value="San-Marino" class="checkbox"> 
+						<label for="San-Marino" class="checkbox_label">Сан-Марино</label> <br> 
+
+						<input type="checkbox" id="Liechtenstein" value="Liechtenstein" class="checkbox"> 
+						<label for="Liechtenstein" class="checkbox_label">Лихтенштейн</label> <br> 
+
+						<input type="checkbox" id="France" value="France" class="checkbox"> 
+						<label for="France" class="checkbox_label">Франция</label> <br> 
+
+						<input type="checkbox" id="Spain" value="Spain" class="checkbox"> 
+						<label for="Spain" class="checkbox_label">Испания</label> <br> 
+						
+						<input type="checkbox" id="China" value="China" class="checkbox"> 
+						<label for="China" class="checkbox_label">Китай</label> <br> 
+
+					</div> 
+				</form> 
+					
+				<form class="filters-list_age"> 
+					<div class="filters-list_headings"> 
+						Возраст
+					</div> 
+					
+					<div>
+						<input type="checkbox" id="21st-century" value="21st-century" class="checkbox"> 
+						<label for="21st-century" class="checkbox_label">XXI век</label> <br>
+						
+						<input type="checkbox" id="20st-century" value="20st-century" class="checkbox"> 
+						<label for="20st-century" class="checkbox_label">XX век</label> <br>
+						
+						<input type="checkbox" id="19st-century" value="19st-century" class="checkbox"> 
+						<label for="19st-century" class="checkbox_label">XIX век</label> <br>
+
+						<input type="checkbox" id="15st-century" value="15st-century" class="checkbox"> 
+						<label for="15st-century" class="checkbox_label">XV век</label> <br>
+						
+						<input type="checkbox" id="14st-century" value="14st-century" class="checkbox"> 
+						<label for="14st-century" class="checkbox_label">XIV век</label> <br>
+
+						<input type="checkbox" id="18st-century" value="18st-century" class="checkbox"> 
+						<label for="18st-century" class="checkbox_label">XVIII век</label> <br>
+					</div> 
+				</form> 
+				
+				<form class="filters-list_material"> 	
+					<div class="filters-list_headings">
+						Материал 
+					</div> 
+					
+					<div>
+						<input type="checkbox" id="gold" value="gold" class="checkbox"> 
+						<label for="gold" class="checkbox_label">Золото</label> <br> 
+						
+						<input type="checkbox" id="silver" value="silver" class="checkbox"> 
+						<label for="silver" class="checkbox_label">Серебро</label> <br>
+						
+						<input type="checkbox" id="copper" value="copper" class="checkbox"> 
+						<label for="copper" class="checkbox_label">Медь</label> <br>
+						
+						<input type="checkbox" id="bronze" value="bronze" class="checkbox"> 
+						<label for="bronze" class="checkbox_label">Бронза</label> <br> 
+						
+						<input type="checkbox" id="porcelain" value="porcelain" class="checkbox"> 
+						<label for="porcelain" class="checkbox_label">Фарфор</label> <br>
+						
+						<input type="checkbox" id="lacquer" value="lacquer" class="checkbox"> 
+						<label for="lacquer" class="checkbox_label">Лакированное дерево</label> <br>
+					</div> 					
+				</form> 
+			</div> 
+			
+			<div class="filters-list_open-close-switch"> 
+			
+				<button type="button" class="filters-list_button filters-list_button_open">
+				</button> 
+				
+			</div> 
+		
+		</aside> 
+		
+		<div class="main-page_lots">
+		
+			<nav class="main-page_lots-groups"> 
+				<button type="button" class="main-page_lots-groups_button lots-group_all main-page_lots-groups_current-selected">
+					Все лоты 
+				</button>
+					
+				<button type="button" class="main-page_lots-groups_button lots-group_coins">
+					Монеты и медали 
+				</button>
+
+				<button type="button" class="main-page_lots-groups_button">
+					Старинные книги 
+				</button>
+					
+				<button type="button" class="main-page_lots-groups_button">
+					Антиквариат 
+				</button> 
+
+				<button type="button" class="main-page_lots-groups_button">
+					Картины 
+				</button> 
+
+				<button type="button" class="main-page_lots-groups_button">
+					Почтовые марки 
+				</button>
+			</nav> 
+			
+			<div class="main-page_lots-preview"> 
+			</div> 
+		
+		</div> 
+	
+	</section> 
+		
+
+	<section class="sign-in display-hidden interactive"> 
+		<div class="sign-in_form display-hidden interactive">
+		
+			<nav class="sign-in_form_navigation">
+				<div class="sign-in_form_navigation_enter">
+					<p>Войти</p>  
+				</div>
+				
+				<button type="button" class="sign-in_form_navigation_register">
+					Регистрация 
+				</button>
+			</nav> 
+			
+			<form class="sign-in_form-field"> 
+				<div>
+					<input type="text" class="sign-in_form_login" placeholder="Ваш логин или e-mail"> 
+				</div> 
+				
+				<div>
+					<input type="password" class="sign-in_form_password" placeholder="Ваш пароль"> 
+				</div> 
+				
+				<div class="sign-in_form_button_wraper">
+					<button type="submit" class="button sign-in_form_button"> 
+						Войти
+					</button> 
+					<button type="button" class="button cancel-button"> 
+						Отмена
+					</button> 
+				</div> 
+			</form> 
+		</div> 
+	</section> 
+	
+	<div class="user-sign-in-issue display-hidden interactive"> 
+		<div class="sign-in_message_wraper">
+			<p class="sign-in_message">
+			</p>
+		</div>
+		
+		<div class="sign-in_message_button_wraper">
+			<button type="button" class="button sign-in_message-button"> 
+				Ок
+			</button> 
+			<button type="button" class="button cancel-button"> 
+				Выйти
+			</button> 
+		</div> 
+	</div> 
+
+	
+	<section class="register display-hidden interactive"> 
+		<div class="register_form display-hidden interactive">
+			<nav class="register_form_navigation">
+				<button type="button" class="register_form_navigation_sign-in">
+					<p>Войти</p>  
+				</button>
+				
+				<div type="button" class="register_form_navigation_register">
+					Регистрация 
+				</div>
+			</nav> 
+			
+			<form class="register_form-field"> 
+				<div>
+					<input type="text" class="register_form_login" placeholder="Укажите Ваш логин"> 
+				</div> 
+				
+				<div>
+					<input type="text" class="register_form_e-mail" placeholder="Укажите Ваш e-mail"> 
+				</div> 
+				
+				<div>
+					<input type="password" class="register_form_password" placeholder="Укажите Ваш пароль"> 
+				</div> 
+				
+				<div class="register_form_button_wraper">
+					<button type="submit" class="button register_form_button"> 
+						Зарегистрироваться
+					</button> 
+					<button type="button" class="button cancel-button"> 
+						Отмена
+					</button> 
+				</div> 
+			</form> 
+		</div> 
+	</section> 
+	
+	<div class="user-register-issue display-hidden interactive"> 
+		<div class="register_message_wraper">
+			<p class="register_message">
+			</p>
+		</div> 
+		
+		<div class="register_message_button_wraper">
+			<button type="button" class="button register_message-button"> 
+				Ок
+			</button> 
+			<button type="button" class="button cancel-button"> 
+				Выйти
+			</button> 
+		</div> 
+	</div> 
+	
+	<div class="user-issues display-hidden interactive"> 
+		<div class="user-issues_message_wraper">
+			<p class="user-issues_message">
+			</p>
+		</div> 
+		
+		<div class="user-issues_button_wraper">
+			<button type="button" class="button cancel-button"> 
+				Ок
+			</button> 
+		</div> 
+	</div> 
+
+	
+	<section class="contacts display-hidden interactive"> 
+		<div class="breadcrumbs">
+			<button type="button" class="breadcrumbs_button return-to-main_button">
+				<div>
+					Главная
+				</div> 
+			</button> 
+			
+			<div class="breadcrumbs_arrow">
+			</div>
+			
+			<div class="breadcrumbs_current">
+				Контакты
+			</div> 
+		</div> 
+				
+		<h1 class="heading_1"> 
+			Контактная информация
+		</h1> 
+		
+		<div class="map_contacts_block">
+			<div class="map">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1425.8504456452836!2d30.465765218998246!3d50.448986058397175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1498400257919" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</div>
+			
+			<div class="contacts_information">		
+				<h2>
+				Адрес:
+				</h2>
+				
+				<p>
+				ул. _______, 111, Киев
+				</p>
+				
+				<h2>
+				Телефон:
+				</h2>
+				
+				<p>
+				+38 044 111-111-111
+				</p>
+				
+				<h2>
+				Электронная почта:
+				</h2>
+				
+				<a href="mailto:">example@mail.com</a>
+			</div> 
+		</div> 
+	</section> 
+
+	
+	<footer class="footer"> 
+			
+		<div class="footer_socials">
+		
+			<div class="footer_socials_wrap">
+				<a href="https://www.facebook.com/" class="footer_socials_facebook-link" target="_blank">
+					<div class="footer_socials_facebook">
+					</div> 
+				</a> 
+			</div>
+			
+			<div class="footer_socials_wrap">
+				<a href="https://www.instagram.com/" class="footer_socials_instagram-link" target="_blank">
+					<div class="footer_socials_instagram">
+					</div> 
+				</a> 
+			</div>
+			
+			<div class="footer_socials_wrap">
+				<a href="https://www.linkedin.com/" class="footer_socials_linkedin-link" target="_blank">
+					<div class="footer_socials_linkedin">
+					</div> 
+				</a> 
+			</div>
+			
+			<div class="footer_socials_wrap">
+				<a href="https://twitter.com/" class="footer_socials_twitter-link" target="_blank">
+					<div class="footer_socials_twitter">
+					</div> 
+				</a> 
+			</div>
+			
+		</div> 
+					
+	</footer> 
+
+	
+<div class="page_blur display-hidden interactive"> 
+</div>
+
+	
+</div> 
+</body>
+
+</html>
