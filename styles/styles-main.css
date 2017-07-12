@@ -3,6 +3,7 @@
 } 
 
 .body {
+	position: relative;
 	font-size: 16px; 
 	font-family: 'Roboto', Helvetica, Arial, Sans-Serif; 
 	color: rgb(51,51,51); 
@@ -167,7 +168,7 @@
 	left: 0; 
 	height: 100%;
 	width: 100%; 
-	background-image: url(../images/Landing_page/postage_stamps_1.jpg); 
+	background-image: url(../images/Landing_page/old_books.jpg); 
 	background-attachment: fixed; 
 	background-position: center; 
 	background-repeat: no-repeat; 
@@ -245,7 +246,6 @@
 	border: 4px solid rgb(0, 197, 170); 
 	border-radius: 20px; 
     font-family: 'Berkshire Swash', cursive;
-
 }
 
 .lpl_1 {
@@ -286,7 +286,6 @@
 	border-top: 1.8px solid rgb(30, 30, 30); 
 	border-left: 1.8px solid rgb(40, 40, 40); 
 }
-
 
 .landing-page_right-scroll {
 	position: relative; 
@@ -350,7 +349,7 @@
 }
 
 .landing-page_parallax_3 {
-	background-image: url(../images/Landing_page/coins_1.jpg); 
+	background-image: url(../images/Landing_page/coins_2.jpg); 
 	height: 100%; 
 	background-attachment: fixed; 
 	background-position: center; 
@@ -594,26 +593,29 @@
 	outline: none;
 } 
 
-.main-page_lots-groups_current-selected {
+.lots-groups_current-selected {
 	background-color: rgb(246, 246, 246); 
 	border-top: 4px solid rgb(30, 228, 148); 
 	color: rgb(0,0,0);
+	padding: 4px 0 0 0;
 	box-shadow: 1px 3px 4px 0 rgba(0,0,0,0.15); 
-	cursor: default; 
+	cursor: none; 
 }
 
-.main-page_lots-groups_current-selected :hover {
+.lots-groups_current-selected :hover {
 	color: rgb(0,0,0);
 	box-shadow: 1px 3px 4px 0 rgba(0,0,0,0.15);
-	cursor: default;
+	cursor: none;
+	padding: 4px 0 0 0;
 	border-top: 4px solid rgb(30, 228, 148); 
 } 
 
-.main-page_lots-groups_current-selected:active {
+.lots-groups_current-selected:active {
 	color: rgb(0,0,0);
 	box-shadow: 1px 3px 4px 0 rgba(0,0,0,0.15);
 	border-top: 4px solid rgb(30, 228, 148); 
 	background-image: none; 
+	padding: 4px 0 0 0;
 }
 
 
@@ -641,7 +643,6 @@
 	z-index: 10; 
 	transition: left 1s; 
 }
-
 
 .filters-list_closed {
 	left: -220px;
@@ -740,7 +741,7 @@
 	font-size: 1.1em; 
 }
 
-.checkbox {
+.filters-list_checkbox {
 	position: absolute; 
 	left: -9999px; 
 } 
@@ -754,17 +755,17 @@
 	cursor: pointer; 
 }
 
-.checkbox:checked + .checkbox_label:before {
+.filters-list_checkbox:checked + .checkbox_label:before {
 	content: "\2611"; 
 	font-weight: bold; 
 } 
 
-.checkbox:checked + .checkbox_label {
+.filters-list_checkbox:checked + .checkbox_label {
 	content: "\2611"; 
 	font-weight: bold; 
 } 
 
-.checkbox:checked + .checkbox_label:hover {
+.filters-list_checkbox:checked + .checkbox_label:hover {
 	content: "\2611"; 
 	font-weight: bold; 
 	color: rgb(0, 0, 0); 
@@ -905,6 +906,35 @@
 
 .button_place-a-bet {
 	margin: auto 0 auto auto; 
+}
+
+.content-preview-pages {
+	padding: 0; 
+	margin: 20px; 
+	width: 100%; 
+	height: auto; 
+	display: flex; 
+	display: -ms-flex; 
+	display: flexbox; 
+	flex-wrap: wrap; 
+	justify-content: flex-start; 
+	-ms-justify-content: flex-start; 
+	align-items: center;
+	-ms-align-items: center; 
+	align-content: center; 	
+	-ms-align-content: center;
+}
+
+.content-preview-page {
+	margin: 0 10px; 
+	width: auto; 
+	height: auto; 
+	color: blue; 
+	font-size: 1.2em; 
+}
+
+.content-preview-page:hover {
+	cursor: pointer; 
 }
 
 
@@ -1792,7 +1822,7 @@
 	border-bottom: 2px solid rgb(140, 140, 140); 
 }
 
-
+ 
 .auction {
 	width: 100%; 
 	height: auto; 
@@ -2027,10 +2057,6 @@
 }
 
 
-.body {
-	position: relative; 
-}
-
 .display-visible {
 	z-index: 100; 
 }
@@ -2042,33 +2068,3 @@
 	top: -9999px; 
 	left: -9999px; 
 } 
-
-
-.content-preview-pages {
-	padding: 0; 
-	margin: 20px; 
-	width: 100%; 
-	height: auto; 
-	display: flex; 
-	display: -ms-flex; 
-	display: flexbox; 
-	flex-wrap: wrap; 
-	justify-content: flex-start; 
-	-ms-justify-content: flex-start; 
-	align-items: center;
-	-ms-align-items: center; 
-	align-content: center; 	
-	-ms-align-content: center;
-}
-
-.content-preview-page {
-	margin: 0 10px; 
-	width: auto; 
-	height: auto; 
-	color: blue; 
-	font-size: 1.2em; 
-}
-
-.content-preview-page:hover {
-	cursor: pointer; 
-}
