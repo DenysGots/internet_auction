@@ -35,6 +35,7 @@ function main(){
 	var filtersList = document.getElementsByClassName("filters-list")[0]; 
 	var filtersListMenu = document.getElementsByClassName("filters-list_filters")[0]; 
 	var filtersListCheckboxes = document.getElementsByClassName("filters-list_checkbox"); 
+	
 	var filtersListButton = document.getElementsByClassName("filters-list_button")[0]; 
 	var lotsPreviewWrapper = document.getElementsByClassName("main-page_lots-preview")[0]; 
 	var lotsPreviews = document.getElementsByClassName("main-page_lot"); 
@@ -82,8 +83,9 @@ function main(){
 	var auctionPage = document.getElementsByClassName("auction")[0]; 
 	
 	var footer = document.getElementsByClassName("footer")[0]; 
-
 	
+	
+
 	var lotPageTemplate = 
 		'<div class="breadcrumbs">' +
 			'<button type="button" class="breadcrumbs_button return-to-main_button">' +
@@ -571,6 +573,7 @@ function main(){
 		'<label class="checkbox_label"></label>'; 
 
 		
+		
 	var slides = document.getElementsByClassName("landing-page_slides");
 	var currentSlide = 0;
 	var slideInterval = setInterval(nextSlide, 2000);
@@ -610,12 +613,13 @@ function main(){
 	}, false); 
 
 	
+	
 	function setHeight(elem) {
 		var documentHeight = Math.max(
 			document.body.scrollHeight, document.documentElement.scrollHeight,  
 			document.body.offsetHeight, document.documentElement.offsetHeight,
 			document.body.clientHeight, document.documentElement.clientHeight, 
-			window.innerHeight, pageBlur.offsetHeight 										
+			window.innerHeight, pageBlur.offsetHeight 											
 		);
 		
 		var minSectionHeight = documentHeight - headerSignedOut.offsetHeight - footer.offsetHeight; 
@@ -625,14 +629,13 @@ function main(){
 		elem.style.height = "auto";   
 	}; 
 
-
 	function swapClasses(elem, class1, class2) {
 		elem.classList.add(class1); 
 		elem.classList.remove(class2); 
 	}; 
 	
 	function hideAll(){
-		var interactiveElements = document.getElementsByClassName("interactive");  // добавить Array.prototype.slice.call.forEach для уборки [0] из начала ? или только для кнопок ? 
+		var interactiveElements = document.getElementsByClassName("interactive");  
 		for (var i = 0; i < interactiveElements.length; i += 1) {						
 			swapClasses(interactiveElements[i], "display-hidden", "display-visible"); 
 		}; 
@@ -667,6 +670,7 @@ function main(){
 			}, false);
 		}); 
 	}; 
+		
 		
 		
 	function showMainPage() {
@@ -763,8 +767,7 @@ function main(){
 
 	handleEvents(registerNewUser, registerUser);
 	
-	function registerUser() {
-		
+	function registerUser() {		
 		var usersList = [];
 		
 		if (!localStorage.getItem("users")) {
@@ -842,9 +845,11 @@ function main(){
 		
 		userIssuesMessage.innerHTML = "Поздравляем, Вы успешно зарегистрированны! <br> Можете зайти на сайт под своим логином и паролем"; 
 		
-		return userIssuesMenu(); 		
+		return userIssuesMenu(); 
+				
 	}; 
 
+	
 	
 	handleEvents(signInUser, signIn);
 	
@@ -913,6 +918,7 @@ function main(){
 	}; 
 
 	
+	
 	handleEvents(userLogOutButton, userLogOut); 	
 	
 	function userLogOut() {
@@ -927,7 +933,6 @@ function main(){
 		elem.classList.add("interactive");
 		elem.setAttribute("data-user", currentUser);
 	}; 
-
 	
 	handleEvents(userProfileButton, showUserProfile); 
 	
@@ -966,6 +971,7 @@ function main(){
 	}; 
 
 	
+	
  	handleEvents(userProfileCreateLotButton, showUserNewLotPage); 
 	
 	function showUserNewLotPage() {
@@ -1002,6 +1008,7 @@ function main(){
 		handleEvents(returnToUserProfileButton, showUserProfile); 
 	};  
 
+	
 	
 	addInitialContent(); 
 	createLotsPages(); 
@@ -1091,6 +1098,7 @@ function main(){
 			elem.setAttribute("data-сountry-of-origin-value", initialContent[i].сountry_of_origin);
 			elem.setAttribute("data-year-of-manufacture-value", initialContent[i].year_of_manufacture);
 			elem.setAttribute("data-material-value", initialContent[i].material);
+			elem.setAttribute("data-current-selected", "current-selected");
 		}; 
 		
 		for (var i = 0; i < initialContent.length; i += 1) {
@@ -1116,9 +1124,9 @@ function main(){
 		
 		lotPreviewOnclick(); 
 		
- 		manageLotsPreviews();  
+		createAsideFlitersList();   
 		
-  		createAsideFlitersList();   
+ 		manageLotsPreviews();  
 	}; 
 	
 	function lotPreviewOnclick() {
@@ -1168,25 +1176,27 @@ function main(){
 		]; 	
 		
 		Array.prototype.slice.call(lotsPreviews).forEach(function(obj){
-			if (obj.hasAttribute("data-сountry-of-origin") && obj.getAttribute("data-сountry-of-origin") !== "undefined") {
-				lotCharacteristicsFilters[0].characteristicFilters.push({
-					value: obj.getAttribute("data-сountry-of-origin-value"), 
-					data_value: obj.getAttribute("data-сountry-of-origin")	
-				}); 					
-			}; 
-			
-			if (obj.hasAttribute("data-year-of-manufacture") && obj.getAttribute("data-year-of-manufacture") !== "undefined") {
-				lotCharacteristicsFilters[1].characteristicFilters.push({
-					value: obj.getAttribute("data-year-of-manufacture-value"), 
-					data_value: obj.getAttribute("data-year-of-manufacture")	
-				}); 
-			}; 
-			
-			if (obj.hasAttribute("data-material") && obj.getAttribute("data-material") !== "undefined") {
-				lotCharacteristicsFilters[2].characteristicFilters.push({
-					value: obj.getAttribute("data-material-value"), 
-					data_value: obj.getAttribute("data-material")	
-				}); 
+			if (obj.getAttribute("data-current-selected") === "current-selected") { 
+				if (obj.hasAttribute("data-сountry-of-origin") && obj.getAttribute("data-сountry-of-origin") !== "undefined") {
+					lotCharacteristicsFilters[0].characteristicFilters.push({
+						value: obj.getAttribute("data-сountry-of-origin-value"), 
+						data_value: obj.getAttribute("data-сountry-of-origin")	
+					}); 					
+				}; 
+				
+				if (obj.hasAttribute("data-year-of-manufacture") && obj.getAttribute("data-year-of-manufacture") !== "undefined") {
+					lotCharacteristicsFilters[1].characteristicFilters.push({
+						value: obj.getAttribute("data-year-of-manufacture-value"), 
+						data_value: obj.getAttribute("data-year-of-manufacture")	
+					}); 
+				}; 
+				
+				if (obj.hasAttribute("data-material") && obj.getAttribute("data-material") !== "undefined") {
+					lotCharacteristicsFilters[2].characteristicFilters.push({
+						value: obj.getAttribute("data-material-value"), 
+						data_value: obj.getAttribute("data-material")	
+					}); 
+				}; 
 			}; 
 		});
 		
@@ -1239,7 +1249,7 @@ function main(){
 				listFragmentWrapper.getElementsByClassName("filters-list_checkbox")[0].id = lotCharacteristicsFilters[i].characteristicFilters[j].data_value; 
 				listFragmentWrapper.getElementsByClassName("filters-list_checkbox")[0].setAttribute("data-type", lotCharacteristicsFilters[i].data_type_characteristic); 
 				listFragmentWrapper.getElementsByClassName("filters-list_checkbox")[0].setAttribute("value", lotCharacteristicsFilters[i].characteristicFilters[j].data_value); 
-				listFragmentWrapper.getElementsByClassName("filters-list_checkbox")[0].setAttribute("checked", "checked"); 
+ 				listFragmentWrapper.getElementsByClassName("filters-list_checkbox")[0].checked = true;  
 				
 				listFragment.appendChild(listFragmentWrapper); 
 				filtersListWrapper.getElementsByClassName("filters-list_filters-list")[0].appendChild(listFragment); 			
@@ -1251,8 +1261,54 @@ function main(){
 		filtersListMenu.appendChild(fragment); 
 	};  
 		
+	
+	
 	function manageLotsPreviews() {
-
+		function manageLotsPreviewsPages() {
+			var visibleLotsPreviews = []; 
+			var numberOfPreviews = visibleLotsPreviews.length; 
+			var currenContentPreviewPage = 1;
+		
+			Array.prototype.slice.call(lotsPreviews).forEach(function(obj){ 
+				if (obj.getAttribute("data-current-selected") === "current-selected" && !obj.classList.contains("display-hidden")) {
+					visibleLotsPreviews.push(obj); 
+				}; 
+			}); 
+			
+			var contentPreviewPages = Math.ceil(visibleLotsPreviews.length / 6); 
+			var fragment = document.createDocumentFragment(); 
+			var contentPreviewPagesWrapper = document.createElement("div"); 
+			
+			contentPreviewPagesWrapper.classList.add("content-preview-pages");
+			
+			for (var i = 1; i <= contentPreviewPages; i += 1) {
+				var contentPreviewPage = document.createElement("p");
+				
+				contentPreviewPage.classList.add("content-preview-page");
+				contentPreviewPage.setAttribute("data-current-preview-page", Math.ceil(i / contentPreviewPages));  
+				contentPreviewPage.innerHTML = i; 
+				contentPreviewPagesWrapper.appendChild(contentPreviewPage); 
+			}; 
+			
+			fragment.appendChild(contentPreviewPagesWrapper); 
+			
+			if (lotsPreviewWrapper.lastChild) {
+				lotsPreviewWrapper.removeChild(lotsPreviewWrapper.lastChild); 
+			}; 
+			
+			lotsPreviewWrapper.appendChild(fragment); 
+		}; 
+		
+		manageLotsPreviewsPages(); 
+		
+		function displayLotsPreviews(elem) {
+			if (elem.getAttribute("data-current-selected") === "current-selected") {
+				showElements(elem); 
+			} else {
+				hideElements(elem); 
+			}; 
+		}; 
+		
 		Array.prototype.slice.call(mainPageMainFilters).forEach(function(mainFilter){
 			mainFilter.addEventListener("click", function(e) {
 				Array.prototype.slice.call(mainPageMainFilters).forEach(function(obj){
@@ -1261,597 +1317,594 @@ function main(){
 				
 				e.target.classList.add("lots-groups_current-selected"); 
 				
+				filtersListMenu.innerHTML = ""; 
+				
 				Array.prototype.slice.call(lotsPreviews).forEach(function(obj){
-					hideElements(obj); 
+					obj.setAttribute("data-current-selected", ""); 
 					
 					switch (e.target.getAttribute("data-type")) {
 						case "all": 
-							showElements(obj); 
+							obj.setAttribute("data-current-selected", "current-selected"); 
 							break; 
 						case "coins": 
 							if (obj.getAttribute("data-type") === "coin") {
-								showElements(obj); 
+								obj.setAttribute("data-current-selected", "current-selected"); 
 							}; 
 							break; 
 						case "books": 
 							if (obj.getAttribute("data-type") === "book") {
-								showElements(obj); 
+								obj.setAttribute("data-current-selected", "current-selected");
 							}; 
 							break; 
 						case "antique": 
 							if (obj.getAttribute("data-type") === "antique") {
-								showElements(obj); 
+								obj.setAttribute("data-current-selected", "current-selected");
 							}; 
 							break; 
 						case "paintings": 
 							if (obj.getAttribute("data-type") === "painting") {
-								showElements(obj); 
+								obj.setAttribute("data-current-selected", "current-selected"); 
 							}; 
 							break; 
 						case "postage-stamps": 
 							if (obj.getAttribute("data-type") === "postage-stamp") {
-								showElements(obj); 
+								obj.setAttribute("data-current-selected", "current-selected"); 
 							};  
 							break; 
 					}; 
-				}); 				
+					displayLotsPreviews(obj); 
+				}); 	
+				
+				createAsideFlitersList(); 
+				
+				manageLotsPreviewsPages();
+				
+				manageAsideFlitersList(); 
 				
 				e.preventDefault();  
 			}, false); 
 		});
-
- 		Array.prototype.slice.call(filtersListCheckboxes).forEach(function(currentCheckbox){
-			currentCheckbox.addEventListener("change", function(e) {
-				
-				var currentCheckboxValue = e.target.getAttribute("id");
-
-				Array.prototype.slice.call(mainPageMainFilters).forEach(function(obj){
-					if (!obj.classList.contains("display-hidden")) {
-						
-						switch(e.target.getAttribute("data-type")) {
-							case "сountry-of-origin": 
-								if (
-									obj.getAttribute("data-сountry-of-origin") === e.target.getAttribute("id") 
-									&& 
-									e.target.getAttribute("checked") === "checked"
-								) {
-									hideElements(obj);					
-								} else if (
-									obj.getAttribute("data-сountry-of-origin") === e.target.getAttribute("id") 
-									&& 
-									e.target.getAttribute("checked") !== "checked"
-								) {
-									showElements(obj);
-								}; 
-								break; 
-							case "year-of-manufacture": 
-								if (
-									obj.getAttribute("data-year-of-manufacture") === e.target.getAttribute("id")
-									&& 
-									e.target.getAttribute("checked") === "checked"
-								) {
-									hideElements(obj);					
-								} else if (
-									obj.getAttribute("data-year-of-manufacture") === e.target.getAttribute("id") 
-									&& 
-									e.target.getAttribute("checked") !== "checked"
-								) {
-									showElements(obj);
-								};  
-								break; 
-							case "material": 
-								if (
-									obj.getAttribute("data-material") === e.target.getAttribute("id") 
-									&& 
-									e.target.getAttribute("checked") === "checked"
-								) {
-									hideElements(obj);					
-								} else if (
-									obj.getAttribute("data-material") === e.target.getAttribute("id") 
-									&& 
-									e.target.getAttribute("checked") !== "checked"
-								) {
-									showElements(obj);
-								};  
-								break; 
-						}; 
-					};  
-				}); 
-			}); 
-		});  
-
-		var contentPreviewPages = Math.ceil(lotsPreviews.length / 6); 
 		
-		var fragment = document.createDocumentFragment(); 
-		var contentPreviewPagesWrapper = document.createElement("div"); 
-		
-		contentPreviewPagesWrapper.classList.add("content-preview-pages");
-		
-		for (var i = 1; i <= contentPreviewPages; i += 1) {
-			var contentPreviewPage = document.createElement("p");
-			
-			contentPreviewPage.classList.add("content-preview-page");
- 			contentPreviewPage.setAttribute("data-current-preview-page", Math.ceil(i / contentPreviewPages));  
-			
-			contentPreviewPage.innerHTML = i; 
-			
-			contentPreviewPagesWrapper.appendChild(contentPreviewPage); 
+		function manageAsideFlitersList() {
+			Array.prototype.slice.call(filtersListCheckboxes).forEach(function(currentCheckbox){
+				currentCheckbox.addEventListener("change", function(e) {
+					
+					var currentCheckboxValue = e.target.getAttribute("id");
+
+					Array.prototype.slice.call(lotsPreviews).forEach(function(obj){
+						if (obj.getAttribute("data-current-selected") === "current-selected") {
+							
+							switch(e.target.getAttribute("data-type")) {
+								case "сountry-of-origin": 
+									if (
+										obj.getAttribute("data-сountry-of-origin") === e.target.getAttribute("id") 
+										&& 
+										!e.target.checked
+									) {
+										hideElements(obj);					
+									} else if (
+										obj.getAttribute("data-сountry-of-origin") === e.target.getAttribute("id") 
+										&& 
+										e.target.checked
+									) {
+										showElements(obj);
+									}; 
+									break; 
+								case "year-of-manufacture": 
+									if (
+										obj.getAttribute("data-year-of-manufacture") === e.target.getAttribute("id")
+										&& 
+										!e.target.checked
+									) {
+										hideElements(obj);					
+									} else if (
+										obj.getAttribute("data-year-of-manufacture") === e.target.getAttribute("id") 
+										&& 
+										e.target.checked
+									) {
+										showElements(obj);
+									};  
+									break; 
+								case "material": 
+									if (
+										obj.getAttribute("data-material") === e.target.getAttribute("id") 
+										&& 
+										!e.target.checked
+									) {
+										hideElements(obj);					
+									} else if (
+										obj.getAttribute("data-material") === e.target.getAttribute("id") 
+										&& 
+										e.target.checked
+									) {
+										showElements(obj);
+									};  
+									break; 
+							}; 
+						};  
+					}); 
+					manageLotsPreviewsPages();
+					
+					e.preventDefault();
+				}, false); 
+			});  
 		}; 
 		
-		fragment.appendChild(contentPreviewPagesWrapper); 
-		
-		lotsPreviewWrapper.appendChild(fragment); 
+		manageAsideFlitersList(); 
 	}; 
 
-function addInitialContent() {
 	
-	var arrayOfInitialContent = [
-		{ 
-			type: "coin", 
-			title: "Георг VI. 1 шиллинг 1945 года.", 
-			description: "Георг VI. 1 шиллинг 1945 года.",
-			сountry_of_origin: "Англия", 
-			year_of_manufacture: "XX век", 
-			material: "Серебро", 
-			data_сountry_of_origin: "England", 
-			data_year_of_manufacture: "20th-century", 
-			data_material: "silver", 
-			starting_price: "$6.00",
-			image_1_src: "../images/Content/Coins/coin-1-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-1-2.jpg", 
-			timer: "00:00:00"
-		/* 	timer: 200 */ //in hours 
-		},
-		{ 
-			type: "coin", 
-			title: "ФРГ. 10 марок 1972 года.", 
-			description: "ФРГ. 10 марок 1972 года.", 
-			сountry_of_origin: "Германия", 			
-			year_of_manufacture: "XX век", 			
-			material: "Серебро", 
-			data_сountry_of_origin: "Germany", 
-			data_year_of_manufacture: "20th-century", 
-			data_material: "silver", 
-			starting_price: "$7.50",
-			image_1_src: "../images/Content/Coins/coin-2-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-2-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "Стрейтс Сеттлментс. Георг V. 10 центов 1927 года.", 
-			description: "Стрейтс Сеттлментс. Георг V. 10 центов 1927 года.", 
-			сountry_of_origin: "Малайзия", 			
-			year_of_manufacture: "XX век", 			
-			material: "Серебро", 
-			data_сountry_of_origin: "Malaysia", 
-			data_year_of_manufacture: "20th-century", 
-			data_material: "silver", 
-			starting_price: "$7.00",
-			image_1_src: "../images/Content/Coins/coin-3-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-3-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "Виктория. 1/2 фартинга 1843 года.", 
-			description: "Виктория. 1/2 фартинга 1843 года.", 
-			сountry_of_origin: "Англия", 			
-			year_of_manufacture: "XIX век", 			
-			material: "Медь", 
-			data_сountry_of_origin: "England", 
-			data_year_of_manufacture: "19th-century", 
-			data_material: "copper", 
-			starting_price: "$34.00",
-			image_1_src: "../images/Content/Coins/coin-4-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-4-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "Виктория. 1 фартинг 1896 года.", 
-			description: "Виктория. 1 фартинг 1896 года.", 
-			сountry_of_origin: "Англия", 			
-			year_of_manufacture: "XIX век", 			
-			material: "Бронза", 
-			data_сountry_of_origin: "England", 
-			data_year_of_manufacture: "19th-century", 
-			data_material: "bronze", 
-			starting_price: "$34.00",
-			image_1_src: "../images/Content/Coins/coin-5-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-5-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "25 долларов 2000 года. Proof.", 
-			description: "25 долларов 2000 года. Proof.", 
-			сountry_of_origin: "Либерия", 			
-			year_of_manufacture: "XXI век", 			
-			material: "Золото", 
-			data_сountry_of_origin: "Liberia", 
-			data_year_of_manufacture: "21st-century", 
-			data_material: "gold", 
-			starting_price: "$51.50",
-			image_1_src: "../images/Content/Coins/coin-6-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-6-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "25 долларов 2001 года. Proof.", 
-			description: "25 долларов 2001 года. Proof.", 
-			сountry_of_origin: "Либерия", 			
-			year_of_manufacture: "XXI век", 			
-			material: "Золото", 
-			data_сountry_of_origin: "Liberia", 
-			data_year_of_manufacture: "21st-century", 
-			data_material: "gold", 
-			starting_price: "$52.00",
-			image_1_src: "../images/Content/Coins/coin-7-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-7-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "Франц Иосиф I. 1 крейцер 1881 года.", 
-			description: "Франц Иосиф I. 1 крейцер 1881 года.", 
-			сountry_of_origin: "Австрия", 
-			year_of_manufacture: "XIX век", 
-			material: "Медь", 
-			data_сountry_of_origin: "Austria", 
-			data_year_of_manufacture: "19th-century", 
-			data_material: "copper", 
-			starting_price: "$10.00",
-			image_1_src: "../images/Content/Coins/coin-8-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-8-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "Медаль: 100-летие со дня рождения Императора Александра I.", 
-			description: "Медаль в память 100-летия со дня рождения Императора Александра I 1877 год.", 
-			сountry_of_origin: "Россия", 
-			year_of_manufacture: "XIX век", 
-			material: "Бронза", 
-			data_сountry_of_origin: "Russia", 
-			data_year_of_manufacture: "19th-century", 
-			data_material: "bronze", 
-			starting_price: "$500.00",
-			image_1_src: "../images/Content/Coins/coin-9-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-9-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "Франц Иосиф I. 1 дукат 1915 года.", 
-			description: "Франц Иосиф I. 1 дукат 1915 года.", 
-			сountry_of_origin: "Австрия", 
-			year_of_manufacture: "XX век", 
-			material: "Золото", 
-			data_сountry_of_origin: "Austria", 
-			data_year_of_manufacture: "20th-century", 
-			data_material: "gold", 
-			starting_price: "$115.00",
-			image_1_src: "../images/Content/Coins/coin-10-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-10-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "Полкопейки 1928 года.", 
-			description: "Полкопейки 1928 года.", 
-			сountry_of_origin: "СССР", 
-			year_of_manufacture: "XX век", 
-			material: "Медь", 
-			data_сountry_of_origin: "USSR", 
-			data_year_of_manufacture: "20th-century", 
-			data_material: "copper", 
-			starting_price: "$20.00",
-			image_1_src: "../images/Content/Coins/coin-11-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-11-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "Норфолк. Георг III. 1/2 пенни 1792 года.", 
-			description: "Норфолк. Георг III. 1/2 пенни 1792 года.", 
-			сountry_of_origin: "Англия", 
-			year_of_manufacture: "XVIII век", 
-			material: "Медь", 
-			data_сountry_of_origin: "England", 
-			data_year_of_manufacture: "18th-century", 
-			data_material: "copper", 
-			starting_price: "$22.00",
-			image_1_src: "../images/Content/Coins/coin-12-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-12-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "Виктория. 1 пенни 1841 года.", 
-			description: "Виктория. 1 пенни 1841 года.", 
-			сountry_of_origin: "Англия", 
-			year_of_manufacture: "XIX век", 
-			material: "Бронза", 
-			data_сountry_of_origin: "England", 
-			data_year_of_manufacture: "19th-century", 
-			data_material: "bronze", 
-			starting_price: "$25.00",
-			image_1_src: "../images/Content/Coins/coin-13-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-13-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "coin", 
-			title: "Сомерсет. Георг III. 1 фартинг 1795 года", 
-			description: "Сомерсет. Георг III. 1 фартинг 1795 года.", 
-			сountry_of_origin: "Англия", 
-			year_of_manufacture: "XVIII век", 
-			material: "Медь", 
-			data_сountry_of_origin: "England", 
-			data_year_of_manufacture: "18th-century", 
-			data_material: "copper", 
-			starting_price: "$18.00",
-			image_1_src: "../images/Content/Coins/coin-14-1.jpg", 
-			image_2_src: "../images/Content/Coins/coin-14-2.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "book", 
-			title: "Antique large Bible brass corner clasps", 
-			description: "This is a very large (13\" tall X 10 3/4\" wide and 3 5/8\" thick) family Holy Bible with leather covers and brass corner clasps. Very beautiful Bible. No printing date (c1880). Hinges are strong, covers firmly attached and open and close easily.    Many full page illustrations, some in color and 2 maps. Water stained on about 4 pages (9th pic.). Covers have some rub marks and fading but still very elegant. Excellent condition, strong hinges (opens and closes easily).", 
-			сountry_of_origin: "США", 
-			year_of_manufacture: "XIX век", 
-			data_сountry_of_origin: "USA", 
-			data_year_of_manufacture: "19th-century", 
-			starting_price: "$375.00",
-			image_1_src: "../images/Content/Books/book-1-1.jpg", 
-			image_2_src: "../images/Content/Books/book-1-2.jpg", 
-			image_3_src: "../images/Content/Books/book-1-3.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "book", 
-			title: "Western Medical Guide Book", 
-			description: "Western Medical Guide Book Japanese Antique Woodblock Print Medicine 1874. 8 books set. Author: Druitt Robert.", 
-			сountry_of_origin: "Япония", 
-			year_of_manufacture: "XIX век", 
-			data_сountry_of_origin: "Japan", 
-			data_year_of_manufacture: "19th-century", 
-			starting_price: "$1.25",
-			image_1_src: "../images/Content/Books/book-2-1.jpg", 
-			image_2_src: "../images/Content/Books/book-2-2.jpg", 
-			image_3_src: "../images/Content/Books/book-2-3.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "book", 
-			title: "Homeopathic HERBAL Anatomy DRUG Pharmacy Medical APOTHECARY", 
-			description: "Homeopathic HERBAL Anatomy DRUG Pharmacy Medical APOTHECARY. Year Printed: 1875. Publisher: WILSTACH, BALDWIN & CO.Author: John C. Gunn", 
-			сountry_of_origin: "США", 
-			year_of_manufacture: "XIX век", 
-			data_сountry_of_origin: "USA", 
-			data_year_of_manufacture: "19th-century", 
-			starting_price: "$250.00",
-			image_1_src: "../images/Content/Books/book-3-1.jpg", 
-			image_2_src: "../images/Content/Books/book-3-2.jpg", 
-			image_3_src: "../images/Content/Books/book-3-3.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "book", 
-			title: "Incunable Book of Hours on VELLUM", 
-			description: "c.1503 MEDIEVAL Incunable Book of Hours on VELLUM - ORIGINAL BINDING incunabula. Fragment - Only 25 leaves remain (though in original binding). Stained internally, many rubrications and illuminations have been rubbed off or otherwise damaged, entire quires have been removed from the binding (probably in the nineteenth-century), though not affecting stability of the text-block. Contemporary early 16th-century binding has been recently repaired around the hinges with new leather. A beautiful, though incomplete, example of a very early Hardouin book of hours on vellum. For consideration today is a medieval Book of Hours (Usage of Rome), printed c.1503 in Paris by Hardouin in Latin and partially in Middle French entirely ON VELLUM.", 
-			сountry_of_origin: "Франция", 
-			year_of_manufacture: "XV век", 
-			data_сountry_of_origin: "France", 
-			data_year_of_manufacture: "15th-century", 
-			starting_price: "$800.00",
-			image_1_src: "../images/Content/Books/book-4-1.jpg", 
-			image_2_src: "../images/Content/Books/book-4-2.jpg", 
-			image_3_src: "../images/Content/Books/book-4-3.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "book", 
-			title: "Homer Odyssey", 
-			description: "Homer Odyssey 1488 Book XVII 1st Printed Edition in Greek Incunable Iliad", 
-			сountry_of_origin: "Англия", 
-			year_of_manufacture: "XIV век", 
-			data_сountry_of_origin: "England", 
-			data_year_of_manufacture: "14th-century", 
-			starting_price: "$8000.00",
-			image_1_src: "../images/Content/Books/book-5-1.jpg", 
-			image_2_src: "../images/Content/Books/book-5-2.jpg", 
-			image_3_src: "../images/Content/Books/book-5-3.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "antique", 
-			title: "Vintage Chinese Lacquer Vase & Wood Stand", 
-			description: "Vintage Chinese Lacquer Vase & Wood Stand", 
-			сountry_of_origin: "Китай", 
-			year_of_manufacture: "XX век", 
-			material: "Лакированное дерево", 
-			data_сountry_of_origin: "China", 
-			data_year_of_manufacture: "20th-century", 
-			data_material: "lacquer", 
-			starting_price: "$27.00",
-			image_1_src: "../images/Content/Antique/antique-2-1.jpg", 
-			image_2_src: "../images/Content/Antique/antique-2-2.jpg", 
-			image_3_src: "../images/Content/Antique/antique-2-3.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "antique", 
-			title: "CHINESE ANTIQUE PORCELAIN POT VASE", 
-			description: "CHINESE ANTIQUE PORCELAIN FINE CRACK BLUE&WHITE DRAGON DESIGN POT VASE F048", 
-			сountry_of_origin: "Китай", 
-			year_of_manufacture: "XVII век", 
-			material: "Фарфор", 
-			data_сountry_of_origin: "China", 
-			data_year_of_manufacture: "17th-century", 
-			data_material: "porcelain", 
-			starting_price: "$400.00",
-			image_1_src: "../images/Content/Antique/antique-3-1.jpg", 
-			image_2_src: "../images/Content/Antique/antique-3-2.jpg", 
-			image_3_src: "../images/Content/Antique/antique-3-3.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "antique", 
-			title: "CHINESE ANTIQUE PORCELAIN VASE", 
-			description: "CHINESE ANTIQUE MING CHENGHUA FAMILLE FIVE COLORED PORCELAIN VASE W/MARKED M119", 
-			сountry_of_origin: "Китай", 
-			year_of_manufacture: "XVI век", 
-			material: "Фарфор", 
-			data_сountry_of_origin: "China", 
-			data_year_of_manufacture: "16th-century", 
-			data_material: "porcelain", 
-			starting_price: "$550.00",
-			image_1_src: "../images/Content/Antique/antique-4-1.jpg", 
-			image_2_src: "../images/Content/Antique/antique-4-2.jpg", 
-			image_3_src: "../images/Content/Antique/antique-4-3.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "antique", 
-			title: "Antique pair of Chinese Porcelain Vases", 
-			description: "Wonderfull Antique pair of Chinese Porcelain Vases, 18th century Fine painting", 
-			сountry_of_origin: "Китай", 
-			year_of_manufacture: "XVIII век", 
-			material: "Фарфор", 
-			data_сountry_of_origin: "China", 
-			data_year_of_manufacture: "18th-century", 
-			data_material: "porcelain", 
-			starting_price: "$370.00",
-			image_1_src: "../images/Content/Antique/antique-5-1.jpg", 
-			image_2_src: "../images/Content/Antique/antique-5-2.jpg", 
-			image_3_src: "../images/Content/Antique/antique-5-3.jpg",
-			timer: "00:00:00"
-		},
-		{ 
-			type: "painting", 
-			title: "View of the Terreiro do Paco", 
-			description: "LOUIS DODD - 1943-2006, View of the Terreiro do Paco (Palace Square in Lisbon), oil on wood, signed, Dim. - 41 x 64 cm", 
-			сountry_of_origin: "Испания", 
-			year_of_manufacture: "XX век", 
-			data_сountry_of_origin: "Spain", 
-			data_year_of_manufacture: "20th-century", 
-			starting_price: "$2000.00",
-			image_1_src: "../images/Content/Paintings/painting-1-1.jpg", 
-			timer: "00:00:00"
-		},	
-		{ 
-			type: "painting", 
-			title: "The Defensive Occupation of Madeira", 
-			description: "LOUIS DODD - 1943-2006, \"The Defensive Occupation of Madeira\", oil on wood, signed, Dim. - 52 x 92 cm", 
-			сountry_of_origin: "Испания", 
-			year_of_manufacture: "XX век", 
-			data_сountry_of_origin: "Spain", 
-			data_year_of_manufacture: "20th-century", 
-			starting_price: "$3000.00",
-			image_1_src: "../images/Content/Paintings/painting-2-1.jpg", 
-			timer: "00:00:00"
-		},	
-		{ 
-			type: "painting", 
-			title: "Paisagem tropical (Tropical Landscape)", 
-			description: "\"Paisagem tropical\" (\"Tropical Landscape\"), watercolour on card stock, European school, 19th/20th C., minor defects, unsigned, Dim. - 19 x 37 cm", 
-			сountry_of_origin: "Европа", 
-			year_of_manufacture: "XIX век", 
-			data_сountry_of_origin: "Europe", 
-			data_year_of_manufacture: "19th-century", 
-			starting_price: "$150.00",
-			image_1_src: "../images/Content/Paintings/painting-3-1.jpg", 
-			timer: "00:00:00"
-		},	
-		{ 
-			type: "painting", 
-			title: "A Pier view - Paris", 
-			description: "A Pier view - Paris, oil on cardboard, signed GILBERT GALLAND (probably Gilbert Galland - 1870-1956), Dim. - 16 x 24 cm", 
-			сountry_of_origin: "Франция", 
-			year_of_manufacture: "XX век", 
-			data_сountry_of_origin: "France", 
-			data_year_of_manufacture: "20th-century", 
-			starting_price: "$200.00",
-			image_1_src: "../images/Content/Paintings/painting-4-1.jpg", 
-			timer: "00:00:00"
-		},	
-		{ 
-			type: "painting", 
-			title: "A Landscape - Figures near the stream", 
-			description: "A Landscape - Figures near the stream, oil on canvas, French school, 19th C., signed A. CHEVALIER, Dim. - 65,5 x 58 cm", 
-			сountry_of_origin: "Франция", 
-			year_of_manufacture: "XIX век", 
-			data_сountry_of_origin: "France", 
-			data_year_of_manufacture: "19th-century", 
-			starting_price: "$400.00",
-			image_1_src: "../images/Content/Paintings/painting-5-1.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "postage-stamp", 
-			title: "ЛИХТЕНШТЕЙН 1994 ИЗОБРЕТЕНИЯ НАУКА", 
-			description: "ЛИХТЕНШТЕЙН 1994 ИЗОБРЕТЕНИЯ НАУКА", 
-			сountry_of_origin: "Лихтенштейн", 
-			year_of_manufacture: "XX век", 
-			data_сountry_of_origin: "Liechtenstein", 
-			data_year_of_manufacture: "20th-century", 
-			starting_price: "$1.00",
-			image_1_src: "../images/Content/Postage-stamps/postage-stamp-1-1.jpg", 
-			timer: "00:00:00"
-		},
-		{ 
-			type: "postage-stamp", 
-			title: "АВСТРАЛИЯ 1931 АВИАЦИЯ * МАТЕРИКИ ЗЕМНОЙ ШАР КАРТА", 
-			description: "АВСТРАЛИЯ 1931 АВИАЦИЯ * МАТЕРИКИ ЗЕМНОЙ ШАР КАРТА", 
-			сountry_of_origin: "Австралия", 
-			year_of_manufacture: "XX век", 
-			data_сountry_of_origin: "Australia", 
-			data_year_of_manufacture: "20th-century", 
-			starting_price: "$10.00",
-			image_1_src: "../images/Content/Postage-stamps/postage-stamp-2-1.jpg", 
-			timer: "00:00:00"
-		},	
-		{ 
-			type: "postage-stamp", 
-			title: "САН-МАРИНО 1892 1L КАТАЛОГ 500 ЕВРО", 
-			description: "САН-МАРИНО 1892 1L КАТАЛОГ 500 ЕВРО", 
-			сountry_of_origin: "Сан-Марино", 
-			year_of_manufacture: "XIX век", 
-			data_сountry_of_origin: "", 
-			data_year_of_manufacture: "", 
-			starting_price: "$70.00",
-			image_1_src: "../images/Content/Postage-stamps/postage-stamp-3-1.jpg", 
-			timer: "00:00:00"
-		},	
-		{ 
-			type: "postage-stamp", 
-			title: "АВСТРАЛИЯ ШТАТЫ 1899 ШТАТ КВИНСЛЕНД", 
-			description: "АВСТРАЛИЯ ШТАТЫ 1899 ШТАТ КВИНСЛЕНД", 
-			сountry_of_origin: "Австралия", 
-			year_of_manufacture: "XIX век", 
-			data_сountry_of_origin: "San-Marino", 
-			data_year_of_manufacture: "19th-century", 
-			starting_price: "$1.50",
-			image_1_src: "../images/Content/Postage-stamps/postage-stamp-4-1.jpg", 
-			timer: "00:00:00"
-		},	
-		{ 
-			type: "postage-stamp", 
-			title: "СССР. 1981 г. Композитор Прокофьев", 
-			description: "СССР. 1981 г. Композитор Прокофьев", 
-			сountry_of_origin: "СССР", 
-			year_of_manufacture: "XX век", 
-			data_сountry_of_origin: "USSR", 
-			data_year_of_manufacture: "20th-century", 
-			starting_price: "$1.00",
-			image_1_src: "../images/Content/Postage-stamps/postage-stamp-5-1.jpg", 
-			timer: "00:00:00"
-		}	
-	]; 
-	
-	localStorage.setItem("content", JSON.stringify(arrayOfInitialContent)); 
+
+	function addInitialContent(){
+		
+		var arrayOfInitialContent = [
+			{ 
+				type: "coin", 
+				title: "Георг VI. 1 шиллинг 1945 года.", 
+				description: "Георг VI. 1 шиллинг 1945 года.",
+				сountry_of_origin: "Англия", 
+				year_of_manufacture: "XX век", 
+				material: "Серебро", 
+				data_сountry_of_origin: "England", 
+				data_year_of_manufacture: "20th-century", 
+				data_material: "silver", 
+				starting_price: "$6.00",
+				image_1_src: "../images/Content/Coins/coin-1-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-1-2.jpg", 
+				timer: "00:00:00"
+			/* 	timer: 200 */ //in hours 
+			},
+			{ 
+				type: "coin", 
+				title: "ФРГ. 10 марок 1972 года.", 
+				description: "ФРГ. 10 марок 1972 года.", 
+				сountry_of_origin: "Германия", 			
+				year_of_manufacture: "XX век", 			
+				material: "Серебро", 
+				data_сountry_of_origin: "Germany", 
+				data_year_of_manufacture: "20th-century", 
+				data_material: "silver", 
+				starting_price: "$7.50",
+				image_1_src: "../images/Content/Coins/coin-2-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-2-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "Стрейтс Сеттлментс. Георг V. 10 центов 1927 года.", 
+				description: "Стрейтс Сеттлментс. Георг V. 10 центов 1927 года.", 
+				сountry_of_origin: "Малайзия", 			
+				year_of_manufacture: "XX век", 			
+				material: "Серебро", 
+				data_сountry_of_origin: "Malaysia", 
+				data_year_of_manufacture: "20th-century", 
+				data_material: "silver", 
+				starting_price: "$7.00",
+				image_1_src: "../images/Content/Coins/coin-3-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-3-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "Виктория. 1/2 фартинга 1843 года.", 
+				description: "Виктория. 1/2 фартинга 1843 года.", 
+				сountry_of_origin: "Англия", 			
+				year_of_manufacture: "XIX век", 			
+				material: "Медь", 
+				data_сountry_of_origin: "England", 
+				data_year_of_manufacture: "19th-century", 
+				data_material: "copper", 
+				starting_price: "$34.00",
+				image_1_src: "../images/Content/Coins/coin-4-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-4-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "Виктория. 1 фартинг 1896 года.", 
+				description: "Виктория. 1 фартинг 1896 года.", 
+				сountry_of_origin: "Англия", 			
+				year_of_manufacture: "XIX век", 			
+				material: "Бронза", 
+				data_сountry_of_origin: "England", 
+				data_year_of_manufacture: "19th-century", 
+				data_material: "bronze", 
+				starting_price: "$34.00",
+				image_1_src: "../images/Content/Coins/coin-5-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-5-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "25 долларов 2000 года. Proof.", 
+				description: "25 долларов 2000 года. Proof.", 
+				сountry_of_origin: "Либерия", 			
+				year_of_manufacture: "XXI век", 			
+				material: "Золото", 
+				data_сountry_of_origin: "Liberia", 
+				data_year_of_manufacture: "21st-century", 
+				data_material: "gold", 
+				starting_price: "$51.50",
+				image_1_src: "../images/Content/Coins/coin-6-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-6-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "25 долларов 2001 года. Proof.", 
+				description: "25 долларов 2001 года. Proof.", 
+				сountry_of_origin: "Либерия", 			
+				year_of_manufacture: "XXI век", 			
+				material: "Золото", 
+				data_сountry_of_origin: "Liberia", 
+				data_year_of_manufacture: "21st-century", 
+				data_material: "gold", 
+				starting_price: "$52.00",
+				image_1_src: "../images/Content/Coins/coin-7-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-7-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "Франц Иосиф I. 1 крейцер 1881 года.", 
+				description: "Франц Иосиф I. 1 крейцер 1881 года.", 
+				сountry_of_origin: "Австрия", 
+				year_of_manufacture: "XIX век", 
+				material: "Медь", 
+				data_сountry_of_origin: "Austria", 
+				data_year_of_manufacture: "19th-century", 
+				data_material: "copper", 
+				starting_price: "$10.00",
+				image_1_src: "../images/Content/Coins/coin-8-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-8-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "Медаль: 100-летие со дня рождения Императора Александра I.", 
+				description: "Медаль в память 100-летия со дня рождения Императора Александра I 1877 год.", 
+				сountry_of_origin: "Россия", 
+				year_of_manufacture: "XIX век", 
+				material: "Бронза", 
+				data_сountry_of_origin: "Russia", 
+				data_year_of_manufacture: "19th-century", 
+				data_material: "bronze", 
+				starting_price: "$500.00",
+				image_1_src: "../images/Content/Coins/coin-9-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-9-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "Франц Иосиф I. 1 дукат 1915 года.", 
+				description: "Франц Иосиф I. 1 дукат 1915 года.", 
+				сountry_of_origin: "Австрия", 
+				year_of_manufacture: "XX век", 
+				material: "Золото", 
+				data_сountry_of_origin: "Austria", 
+				data_year_of_manufacture: "20th-century", 
+				data_material: "gold", 
+				starting_price: "$115.00",
+				image_1_src: "../images/Content/Coins/coin-10-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-10-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "Полкопейки 1928 года.", 
+				description: "Полкопейки 1928 года.", 
+				сountry_of_origin: "СССР", 
+				year_of_manufacture: "XX век", 
+				material: "Медь", 
+				data_сountry_of_origin: "USSR", 
+				data_year_of_manufacture: "20th-century", 
+				data_material: "copper", 
+				starting_price: "$20.00",
+				image_1_src: "../images/Content/Coins/coin-11-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-11-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "Норфолк. Георг III. 1/2 пенни 1792 года.", 
+				description: "Норфолк. Георг III. 1/2 пенни 1792 года.", 
+				сountry_of_origin: "Англия", 
+				year_of_manufacture: "XVIII век", 
+				material: "Медь", 
+				data_сountry_of_origin: "England", 
+				data_year_of_manufacture: "18th-century", 
+				data_material: "copper", 
+				starting_price: "$22.00",
+				image_1_src: "../images/Content/Coins/coin-12-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-12-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "Виктория. 1 пенни 1841 года.", 
+				description: "Виктория. 1 пенни 1841 года.", 
+				сountry_of_origin: "Англия", 
+				year_of_manufacture: "XIX век", 
+				material: "Бронза", 
+				data_сountry_of_origin: "England", 
+				data_year_of_manufacture: "19th-century", 
+				data_material: "bronze", 
+				starting_price: "$25.00",
+				image_1_src: "../images/Content/Coins/coin-13-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-13-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "coin", 
+				title: "Сомерсет. Георг III. 1 фартинг 1795 года", 
+				description: "Сомерсет. Георг III. 1 фартинг 1795 года.", 
+				сountry_of_origin: "Англия", 
+				year_of_manufacture: "XVIII век", 
+				material: "Медь", 
+				data_сountry_of_origin: "England", 
+				data_year_of_manufacture: "18th-century", 
+				data_material: "copper", 
+				starting_price: "$18.00",
+				image_1_src: "../images/Content/Coins/coin-14-1.jpg", 
+				image_2_src: "../images/Content/Coins/coin-14-2.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "book", 
+				title: "Antique large Bible brass corner clasps", 
+				description: "This is a very large (13\" tall X 10 3/4\" wide and 3 5/8\" thick) family Holy Bible with leather covers and brass corner clasps. Very beautiful Bible. No printing date (c1880). Hinges are strong, covers firmly attached and open and close easily.    Many full page illustrations, some in color and 2 maps. Water stained on about 4 pages (9th pic.). Covers have some rub marks and fading but still very elegant. Excellent condition, strong hinges (opens and closes easily).", 
+				сountry_of_origin: "США", 
+				year_of_manufacture: "XIX век", 
+				data_сountry_of_origin: "USA", 
+				data_year_of_manufacture: "19th-century", 
+				starting_price: "$375.00",
+				image_1_src: "../images/Content/Books/book-1-1.jpg", 
+				image_2_src: "../images/Content/Books/book-1-2.jpg", 
+				image_3_src: "../images/Content/Books/book-1-3.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "book", 
+				title: "Western Medical Guide Book", 
+				description: "Western Medical Guide Book Japanese Antique Woodblock Print Medicine 1874. 8 books set. Author: Druitt Robert.", 
+				сountry_of_origin: "Япония", 
+				year_of_manufacture: "XIX век", 
+				data_сountry_of_origin: "Japan", 
+				data_year_of_manufacture: "19th-century", 
+				starting_price: "$1.25",
+				image_1_src: "../images/Content/Books/book-2-1.jpg", 
+				image_2_src: "../images/Content/Books/book-2-2.jpg", 
+				image_3_src: "../images/Content/Books/book-2-3.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "book", 
+				title: "Homeopathic HERBAL Anatomy DRUG Pharmacy Medical APOTHECARY", 
+				description: "Homeopathic HERBAL Anatomy DRUG Pharmacy Medical APOTHECARY. Year Printed: 1875. Publisher: WILSTACH, BALDWIN & CO.Author: John C. Gunn", 
+				сountry_of_origin: "США", 
+				year_of_manufacture: "XIX век", 
+				data_сountry_of_origin: "USA", 
+				data_year_of_manufacture: "19th-century", 
+				starting_price: "$250.00",
+				image_1_src: "../images/Content/Books/book-3-1.jpg", 
+				image_2_src: "../images/Content/Books/book-3-2.jpg", 
+				image_3_src: "../images/Content/Books/book-3-3.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "book", 
+				title: "Incunable Book of Hours on VELLUM", 
+				description: "c.1503 MEDIEVAL Incunable Book of Hours on VELLUM - ORIGINAL BINDING incunabula. Fragment - Only 25 leaves remain (though in original binding). Stained internally, many rubrications and illuminations have been rubbed off or otherwise damaged, entire quires have been removed from the binding (probably in the nineteenth-century), though not affecting stability of the text-block. Contemporary early 16th-century binding has been recently repaired around the hinges with new leather. A beautiful, though incomplete, example of a very early Hardouin book of hours on vellum. For consideration today is a medieval Book of Hours (Usage of Rome), printed c.1503 in Paris by Hardouin in Latin and partially in Middle French entirely ON VELLUM.", 
+				сountry_of_origin: "Франция", 
+				year_of_manufacture: "XV век", 
+				data_сountry_of_origin: "France", 
+				data_year_of_manufacture: "15th-century", 
+				starting_price: "$800.00",
+				image_1_src: "../images/Content/Books/book-4-1.jpg", 
+				image_2_src: "../images/Content/Books/book-4-2.jpg", 
+				image_3_src: "../images/Content/Books/book-4-3.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "book", 
+				title: "Homer Odyssey", 
+				description: "Homer Odyssey 1488 Book XVII 1st Printed Edition in Greek Incunable Iliad", 
+				сountry_of_origin: "Англия", 
+				year_of_manufacture: "XIV век", 
+				data_сountry_of_origin: "England", 
+				data_year_of_manufacture: "14th-century", 
+				starting_price: "$8000.00",
+				image_1_src: "../images/Content/Books/book-5-1.jpg", 
+				image_2_src: "../images/Content/Books/book-5-2.jpg", 
+				image_3_src: "../images/Content/Books/book-5-3.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "antique", 
+				title: "Vintage Chinese Lacquer Vase & Wood Stand", 
+				description: "Vintage Chinese Lacquer Vase & Wood Stand", 
+				сountry_of_origin: "Китай", 
+				year_of_manufacture: "XX век", 
+				material: "Лакированное дерево", 
+				data_сountry_of_origin: "China", 
+				data_year_of_manufacture: "20th-century", 
+				data_material: "lacquer", 
+				starting_price: "$27.00",
+				image_1_src: "../images/Content/Antique/antique-2-1.jpg", 
+				image_2_src: "../images/Content/Antique/antique-2-2.jpg", 
+				image_3_src: "../images/Content/Antique/antique-2-3.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "antique", 
+				title: "CHINESE ANTIQUE PORCELAIN POT VASE", 
+				description: "CHINESE ANTIQUE PORCELAIN FINE CRACK BLUE&WHITE DRAGON DESIGN POT VASE F048", 
+				сountry_of_origin: "Китай", 
+				year_of_manufacture: "XVII век", 
+				material: "Фарфор", 
+				data_сountry_of_origin: "China", 
+				data_year_of_manufacture: "17th-century", 
+				data_material: "porcelain", 
+				starting_price: "$400.00",
+				image_1_src: "../images/Content/Antique/antique-3-1.jpg", 
+				image_2_src: "../images/Content/Antique/antique-3-2.jpg", 
+				image_3_src: "../images/Content/Antique/antique-3-3.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "antique", 
+				title: "CHINESE ANTIQUE PORCELAIN VASE", 
+				description: "CHINESE ANTIQUE MING CHENGHUA FAMILLE FIVE COLORED PORCELAIN VASE W/MARKED M119", 
+				сountry_of_origin: "Китай", 
+				year_of_manufacture: "XVI век", 
+				material: "Фарфор", 
+				data_сountry_of_origin: "China", 
+				data_year_of_manufacture: "16th-century", 
+				data_material: "porcelain", 
+				starting_price: "$550.00",
+				image_1_src: "../images/Content/Antique/antique-4-1.jpg", 
+				image_2_src: "../images/Content/Antique/antique-4-2.jpg", 
+				image_3_src: "../images/Content/Antique/antique-4-3.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "antique", 
+				title: "Antique pair of Chinese Porcelain Vases", 
+				description: "Wonderfull Antique pair of Chinese Porcelain Vases, 18th century Fine painting", 
+				сountry_of_origin: "Китай", 
+				year_of_manufacture: "XVIII век", 
+				material: "Фарфор", 
+				data_сountry_of_origin: "China", 
+				data_year_of_manufacture: "18th-century", 
+				data_material: "porcelain", 
+				starting_price: "$370.00",
+				image_1_src: "../images/Content/Antique/antique-5-1.jpg", 
+				image_2_src: "../images/Content/Antique/antique-5-2.jpg", 
+				image_3_src: "../images/Content/Antique/antique-5-3.jpg",
+				timer: "00:00:00"
+			},
+			{ 
+				type: "painting", 
+				title: "View of the Terreiro do Paco", 
+				description: "LOUIS DODD - 1943-2006, View of the Terreiro do Paco (Palace Square in Lisbon), oil on wood, signed, Dim. - 41 x 64 cm", 
+				сountry_of_origin: "Испания", 
+				year_of_manufacture: "XX век", 
+				data_сountry_of_origin: "Spain", 
+				data_year_of_manufacture: "20th-century", 
+				starting_price: "$2000.00",
+				image_1_src: "../images/Content/Paintings/painting-1-1.jpg", 
+				timer: "00:00:00"
+			},	
+			{ 
+				type: "painting", 
+				title: "The Defensive Occupation of Madeira", 
+				description: "LOUIS DODD - 1943-2006, \"The Defensive Occupation of Madeira\", oil on wood, signed, Dim. - 52 x 92 cm", 
+				сountry_of_origin: "Испания", 
+				year_of_manufacture: "XX век", 
+				data_сountry_of_origin: "Spain", 
+				data_year_of_manufacture: "20th-century", 
+				starting_price: "$3000.00",
+				image_1_src: "../images/Content/Paintings/painting-2-1.jpg", 
+				timer: "00:00:00"
+			},	
+			{ 
+				type: "painting", 
+				title: "Paisagem tropical (Tropical Landscape)", 
+				description: "\"Paisagem tropical\" (\"Tropical Landscape\"), watercolour on card stock, European school, 19th/20th C., minor defects, unsigned, Dim. - 19 x 37 cm", 
+				сountry_of_origin: "Европа", 
+				year_of_manufacture: "XIX век", 
+				data_сountry_of_origin: "Europe", 
+				data_year_of_manufacture: "19th-century", 
+				starting_price: "$150.00",
+				image_1_src: "../images/Content/Paintings/painting-3-1.jpg", 
+				timer: "00:00:00"
+			},	
+			{ 
+				type: "painting", 
+				title: "A Pier view - Paris", 
+				description: "A Pier view - Paris, oil on cardboard, signed GILBERT GALLAND (probably Gilbert Galland - 1870-1956), Dim. - 16 x 24 cm", 
+				сountry_of_origin: "Франция", 
+				year_of_manufacture: "XX век", 
+				data_сountry_of_origin: "France", 
+				data_year_of_manufacture: "20th-century", 
+				starting_price: "$200.00",
+				image_1_src: "../images/Content/Paintings/painting-4-1.jpg", 
+				timer: "00:00:00"
+			},	
+			{ 
+				type: "painting", 
+				title: "A Landscape - Figures near the stream", 
+				description: "A Landscape - Figures near the stream, oil on canvas, French school, 19th C., signed A. CHEVALIER, Dim. - 65,5 x 58 cm", 
+				сountry_of_origin: "Франция", 
+				year_of_manufacture: "XIX век", 
+				data_сountry_of_origin: "France", 
+				data_year_of_manufacture: "19th-century", 
+				starting_price: "$400.00",
+				image_1_src: "../images/Content/Paintings/painting-5-1.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "postage-stamp", 
+				title: "ЛИХТЕНШТЕЙН 1994 ИЗОБРЕТЕНИЯ НАУКА", 
+				description: "ЛИХТЕНШТЕЙН 1994 ИЗОБРЕТЕНИЯ НАУКА", 
+				сountry_of_origin: "Лихтенштейн", 
+				year_of_manufacture: "XX век", 
+				data_сountry_of_origin: "Liechtenstein", 
+				data_year_of_manufacture: "20th-century", 
+				starting_price: "$1.00",
+				image_1_src: "../images/Content/Postage-stamps/postage-stamp-1-1.jpg", 
+				timer: "00:00:00"
+			},
+			{ 
+				type: "postage-stamp", 
+				title: "АВСТРАЛИЯ 1931 АВИАЦИЯ * МАТЕРИКИ ЗЕМНОЙ ШАР КАРТА", 
+				description: "АВСТРАЛИЯ 1931 АВИАЦИЯ * МАТЕРИКИ ЗЕМНОЙ ШАР КАРТА", 
+				сountry_of_origin: "Австралия", 
+				year_of_manufacture: "XX век", 
+				data_сountry_of_origin: "Australia", 
+				data_year_of_manufacture: "20th-century", 
+				starting_price: "$10.00",
+				image_1_src: "../images/Content/Postage-stamps/postage-stamp-2-1.jpg", 
+				timer: "00:00:00"
+			},	
+			{ 
+				type: "postage-stamp", 
+				title: "САН-МАРИНО 1892 1L КАТАЛОГ 500 ЕВРО", 
+				description: "САН-МАРИНО 1892 1L КАТАЛОГ 500 ЕВРО", 
+				сountry_of_origin: "Сан-Марино", 
+				year_of_manufacture: "XIX век", 
+				data_сountry_of_origin: "San-Marino", 
+				data_year_of_manufacture: "19th-century", 
+				starting_price: "$70.00",
+				image_1_src: "../images/Content/Postage-stamps/postage-stamp-3-1.jpg", 
+				timer: "00:00:00"
+			},	
+			{ 
+				type: "postage-stamp", 
+				title: "АВСТРАЛИЯ ШТАТЫ 1899 ШТАТ КВИНСЛЕНД", 
+				description: "АВСТРАЛИЯ ШТАТЫ 1899 ШТАТ КВИНСЛЕНД", 
+				сountry_of_origin: "Австралия", 
+				year_of_manufacture: "XIX век", 
+				data_сountry_of_origin: "Australia", 
+				data_year_of_manufacture: "19th-century", 
+				starting_price: "$1.50",
+				image_1_src: "../images/Content/Postage-stamps/postage-stamp-4-1.jpg", 
+				timer: "00:00:00"
+			},	
+			{ 
+				type: "postage-stamp", 
+				title: "СССР. 1981 г. Композитор Прокофьев", 
+				description: "СССР. 1981 г. Композитор Прокофьев", 
+				сountry_of_origin: "СССР", 
+				year_of_manufacture: "XX век", 
+				data_сountry_of_origin: "USSR", 
+				data_year_of_manufacture: "20th-century", 
+				starting_price: "$1.00",
+				image_1_src: "../images/Content/Postage-stamps/postage-stamp-5-1.jpg", 
+				timer: "00:00:00"
+			}	
+		]; 
+		
+		localStorage.setItem("content", JSON.stringify(arrayOfInitialContent)); 
+	}; 
 }; 
