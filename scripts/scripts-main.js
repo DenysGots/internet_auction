@@ -22,11 +22,14 @@ function main(){
 	var header = document.getElementsByClassName("header")[0]; 
 	var headerSignedOut = document.getElementsByClassName("header_navigation_signed-out")[0]; 
 	var headerSignedIn = document.getElementsByClassName("header_navigation_signed-in")[0]; 
-	var headerSearch = document.getElementsByClassName("header_search")[0]; 
 	var contactsButton = document.getElementsByClassName("contacts-button"); 
 	var signInButton = document.getElementsByClassName("sign-in-button"); 
 	var registerButton = document.getElementsByClassName("register-button"); 
-	
+	var headerSearch = document.getElementsByClassName("header_search")[0]; 
+	var headerSearchButton = document.getElementsByClassName("search-button"); 	
+	var headerSearchText = document.getElementsByClassName("header_search_text-field")[0]; 
+	var headerSearchOptions = document.getElementsByClassName("header_search_options")[0]; 
+
 	var userProfileButton = document.getElementsByClassName("user-profile-button"); 
 	var userLogOutButton = document.getElementsByClassName("user-log-out-button"); 
 	
@@ -38,7 +41,8 @@ function main(){
 	
 	var filtersListButton = document.getElementsByClassName("filters-list_button")[0]; 
 	var lotsPreviewWrapper = document.getElementsByClassName("main-page_lots-preview")[0]; 
-	var lotsPreviews = document.getElementsByClassName("main-page_lot"); 
+	var lotsPreviews = document.getElementsByClassName("main-page_lot");  
+	var lotsPreviewsPagesBlock = document.getElementsByClassName("content-preview-pages")[0]; 
 	var lotsPreviewsPages = document.getElementsByClassName("content-preview-page"); 
 	var returnToMainPage = document.getElementsByClassName("return-to-main_button"); 
 			
@@ -71,8 +75,14 @@ function main(){
 	var contactsPage = document.getElementsByClassName("contacts")[0]; 
 		
 	var searchResultsPage = document.getElementsByClassName("search-results")[0]; 
+	var searchResultsContainer = document.getElementsByClassName("search-results_container")[0]; 
+	var subjectOfSearch = document.getElementsByClassName("subject-of-search")[0]; 
+	var searchPreviews = document.getElementsByClassName("search-result"); 
+	var returnToSearchPage = document.getElementsByClassName("return-to-search_button"); 
 	
 	var lotsPages = document.getElementsByClassName("lot-page"); 
+	var lotPageMainImage = document.getElementsByClassName("lot-page_main-image"); 
+	var lotPageImages = document.getElementsByClassName("lot-page_image-preview"); 
 	
 	var usersProfilesPages = document.getElementsByClassName("user-profile"); 
 	var userProfileCreateLotButton = document.getElementsByClassName("user-profile_create-lot_button"); 
@@ -179,6 +189,43 @@ function main(){
 				'</form>' + 	
 			'</div>' + 
 		'</div>'; 
+		
+	var lotAfterSearchTemplate = 
+		'<button type="button" class="breadcrumbs_button return-to-main_button">' +
+			'<div>' +
+				'Главная' +
+			'</div>' + 
+		'</button>' + 
+		
+		'<div class="breadcrumbs_arrow return-to-search_arrow">' +   
+		'</div>' +
+			
+		'<button type="button" class="breadcrumbs_button return-to-search_button">' +   
+			'<div>' +   
+				'Результаты поиска' +  
+			'</div>' +    
+		'</button>' +   
+					
+		'<div class="breadcrumbs_arrow return-to-search_arrow">' +   
+		'</div>' + 
+		
+		'<div class="breadcrumbs_current">' +
+			'Страница лота' +
+		'</div>';  	
+		
+	var lotExitSearchTemplate = 
+		'<button type="button" class="breadcrumbs_button return-to-main_button">' +
+			'<div>' +
+				'Главная' +
+			'</div>' + 
+		'</button>' + 
+					
+		'<div class="breadcrumbs_arrow return-to-search_arrow">' +   
+		'</div>' + 
+		
+		'<div class="breadcrumbs_current">' +
+			'Страница лота' +
+		'</div>';  	
 	
 	var lotPreviewTemplate = 	
 		'<div class="main-page_lot_image-window">' +    
@@ -530,36 +577,28 @@ function main(){
 		'</div>' +  
 		'</section>'; 
 
-	var searchResultsPageTemplate = 
-		'<section class="search-results display-hidden interactive">' +  
-		'<div class="breadcrumbs">' +  
-			'<button type="button" class="breadcrumbs_button">' +  
-				'<div>' +  
-					'Главная' +  
-				'</div>' +   
-			'</button>' +   
-			
-			'<div class="breadcrumbs_arrow">' +  
-			'</div>' +  
-			
-			'<div class="breadcrumbs_current">' +  
-				'Результаты поиска' +  
-			'</div>' +   
-		'</div>' +  
-				
-		'<h1 class="heading_1">' +   
-			'Результаты поиска' +  
-		'</h1>' +   
-		
-		'<h2 class="heading_2 subject-of-search">' +  
-			'Вы искали:' +   
-		'</h2>' +   
-		
-		'<div class="search-results_display">' +   
-			'<p class="search-results_container">' +  
-			'</p>' +   
+	var searchResultTemplate = 
+		'<div class="search-result_lot_image-window">' +    
+			'<img src="" alt="" class="search-result_lot-image">' +    
 		'</div>' +   
-		'</section>'; 
+		
+		'<div class="search-result_lot-information">' +     
+			'<p class="search-result_lot-information_description">' +    
+			'</p>' +    
+			
+			'<p class="miscellaneous-text">' +   
+				'Стартовая цена:' +    
+			'</p>' +    
+			
+			'<p class="search-result_lot_starting-price">' +      
+			'</p>' +         
+		'</div>' +         
+		
+		'<div class="search-result_lot_timer_wrapper">' +         
+			'<div class="search-result_lot_timer">' +    
+				'00:00:00' +   
+			'</div>' +   
+		'</div>';  
 		
  	var asideFiltersTemplate = 
 		'<div class="filters-list_headings">' + 
@@ -570,7 +609,7 @@ function main(){
 	
 	var filterTemplate = 
 		'<input type="checkbox" class="filters-list_checkbox">' + 
-		'<label class="checkbox_label"></label>'; 
+		'<label class="checkbox_label"></label>'; 	
 
 		
 		
@@ -619,13 +658,12 @@ function main(){
 			document.body.scrollHeight, document.documentElement.scrollHeight,  
 			document.body.offsetHeight, document.documentElement.offsetHeight,
 			document.body.clientHeight, document.documentElement.clientHeight, 
-			window.innerHeight, pageBlur.offsetHeight 											
+			window.innerHeight, pageBlur.offsetHeight 										
 		);
 		
 		var minSectionHeight = documentHeight - headerSignedOut.offsetHeight - footer.offsetHeight; 
 		
  		elem.style.minHeight = minSectionHeight + "px"; 
-		
 		elem.style.height = "auto";   
 	}; 
 
@@ -670,13 +708,13 @@ function main(){
 			}, false);
 		}); 
 	}; 
-		
-		
+			
 		
 	function showMainPage() {
 		hideAll();
 		showElements(mainWrapper, mainPage, header, headerSearch, filtersList); 
 		changeHeader(); 
+		changeBreadcrumbs(); 
 	}; 
 	
 	function showContactsPage() {
@@ -716,6 +754,14 @@ function main(){
 		userIssues.style.zIndex = "110";  
 	}; 
 	
+	function showSearchResultsPage() {
+		hideAll();
+		showElements(searchResultsPage, mainWrapper, header); 
+		changeHeader(); 
+		setHeight(searchResultsPage); 	
+		changeBreadcrumbs(); 
+	}; 
+	
 	function filtersListAnimation() {
 		if (filtersList.classList.contains("filters-list_closed")) {
 			swapClasses(filtersList, "filters-list_open", "filters-list_closed"); 
@@ -735,6 +781,15 @@ function main(){
 			hideElements(headerSignedIn); 
 			showElements(headerSignedOut); 
 		}; 
+	}; 
+	
+	function changeBreadcrumbs(){
+		Array.prototype.slice.call(lotsPages).forEach(function(obj){
+			obj.getElementsByClassName("breadcrumbs")[0].innerHTML = ""; 
+			obj.getElementsByClassName("breadcrumbs")[0].innerHTML = lotExitSearchTemplate; 
+		});
+		
+		handleEvents(returnToMainPage, showMainPage); 
 	}; 
 	
 	
@@ -759,15 +814,17 @@ function main(){
 	
 	handleEvents(signInMessageButton, showSignInMenu); 
 	
+	handleEvents(returnToSearchPage, showSearchResultsPage); 
+	
 	filtersListButton.addEventListener("click", function(){
 		filtersListAnimation();
 	}, false);  
 	
 	
-
+	
 	handleEvents(registerNewUser, registerUser);
 	
-	function registerUser() {		
+	function registerUser() {
 		var usersList = [];
 		
 		if (!localStorage.getItem("users")) {
@@ -918,7 +975,6 @@ function main(){
 	}; 
 
 	
-	
 	handleEvents(userLogOutButton, userLogOut); 	
 	
 	function userLogOut() {
@@ -934,6 +990,7 @@ function main(){
 		elem.setAttribute("data-user", currentUser);
 	}; 
 	
+
 	handleEvents(userProfileButton, showUserProfile); 
 	
 	function showUserProfile() {
@@ -1070,12 +1127,42 @@ function main(){
 			};  */
 			
 			fragment.appendChild(lotPage); 
+			
+			initialContent[i].lot_number = i + 1; 
 		};
 		
 		mainWrapper.insertBefore(fragment, footer); 
 		
 		handleEvents(returnToMainPage, showMainPage); 
+		
+		localStorage.setItem("content", JSON.stringify(initialContent)); 
+		
+		handleLotPageImages(); 
 	}; 
+	
+		
+	function handleLotPageImages() {
+		var currentLot; 
+		var imageSrc; 
+		
+		Array.prototype.slice.call(lotPageImages).forEach(function(obj){
+			obj.addEventListener("click", function(e) {
+				
+				imageSrc = e.target.src; 
+				
+				currentLot = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute("data-lot"); 
+				
+				Array.prototype.slice.call(lotsPages).forEach(function(obj){
+					if (obj.getAttribute("data-lot") === currentLot) {
+						obj.getElementsByClassName("lot-page_main-image")[0].src = imageSrc; 
+					}; 
+				});
+				
+				e.preventDefault();  
+			}, false); 
+		}); 
+	}; 
+		
 	
 	function createLotsPreviews() {
 		var initialContent = [];
@@ -1091,7 +1178,6 @@ function main(){
 			lotPreview.classList.add("main-page_lot"); 
 			elem.setAttribute("data-lot", i + 1); 
 			elem.setAttribute("data-type", initialContent[i].type);
-			elem.setAttribute("data-current-preview-page", Math.ceil((i + 1) / 6));
 			elem.setAttribute("data-сountry-of-origin", initialContent[i].data_сountry_of_origin);
 			elem.setAttribute("data-year-of-manufacture", initialContent[i].data_year_of_manufacture);
 			elem.setAttribute("data-material", initialContent[i].data_material);
@@ -1120,7 +1206,7 @@ function main(){
 			fragment.appendChild(lotPreview);  
 		};
 		
-		lotsPreviewWrapper.appendChild(fragment); 
+		lotsPreviewWrapper.appendChild(fragment);  
 		
 		lotPreviewOnclick(); 
 		
@@ -1200,7 +1286,7 @@ function main(){
 			}; 
 		});
 		
- 		function trimUnique(arr) {
+		function trimUnique(arr) {
 			var seen = {}; 
 			
 			arr.sort(compare); 
@@ -1216,7 +1302,7 @@ function main(){
 				seen[x.data_value] = true; 
 				return x; 
 			}); 
-		};  
+		};   
 		
 		for (var i = 0; i < lotCharacteristicsFilters.length; i += 1) {
  			lotCharacteristicsFilters[i].characteristicFilters = trimUnique(lotCharacteristicsFilters[i].characteristicFilters);  
@@ -1260,46 +1346,9 @@ function main(){
 		
 		filtersListMenu.appendChild(fragment); 
 	};  
-		
 	
 	
 	function manageLotsPreviews() {
-		function manageLotsPreviewsPages() {
-			var visibleLotsPreviews = []; 
-			var numberOfPreviews = visibleLotsPreviews.length; 
-			var currenContentPreviewPage = 1;
-		
-			Array.prototype.slice.call(lotsPreviews).forEach(function(obj){ 
-				if (obj.getAttribute("data-current-selected") === "current-selected" && !obj.classList.contains("display-hidden")) {
-					visibleLotsPreviews.push(obj); 
-				}; 
-			}); 
-			
-			var contentPreviewPages = Math.ceil(visibleLotsPreviews.length / 6); 
-			var fragment = document.createDocumentFragment(); 
-			var contentPreviewPagesWrapper = document.createElement("div"); 
-			
-			contentPreviewPagesWrapper.classList.add("content-preview-pages");
-			
-			for (var i = 1; i <= contentPreviewPages; i += 1) {
-				var contentPreviewPage = document.createElement("p");
-				
-				contentPreviewPage.classList.add("content-preview-page");
-				contentPreviewPage.setAttribute("data-current-preview-page", Math.ceil(i / contentPreviewPages));  
-				contentPreviewPage.innerHTML = i; 
-				contentPreviewPagesWrapper.appendChild(contentPreviewPage); 
-			}; 
-			
-			fragment.appendChild(contentPreviewPagesWrapper); 
-			
-			if (lotsPreviewWrapper.lastChild) {
-				lotsPreviewWrapper.removeChild(lotsPreviewWrapper.lastChild); 
-			}; 
-			
-			lotsPreviewWrapper.appendChild(fragment); 
-		}; 
-		
-		manageLotsPreviewsPages(); 
 		
 		function displayLotsPreviews(elem) {
 			if (elem.getAttribute("data-current-selected") === "current-selected") {
@@ -1352,25 +1401,27 @@ function main(){
 							};  
 							break; 
 					}; 
+					
 					displayLotsPreviews(obj); 
 				}); 	
 				
 				createAsideFlitersList(); 
 				
-				manageLotsPreviewsPages();
-				
 				manageAsideFlitersList(); 
+				
+  				manageLotsPreviewsPages();    
 				
 				e.preventDefault();  
 			}, false); 
-		});
+		}); 
+		
+		
+		manageAsideFlitersList(); 
 		
 		function manageAsideFlitersList() {
 			Array.prototype.slice.call(filtersListCheckboxes).forEach(function(currentCheckbox){
 				currentCheckbox.addEventListener("change", function(e) {
 					
-					var currentCheckboxValue = e.target.getAttribute("id");
-
 					Array.prototype.slice.call(lotsPreviews).forEach(function(obj){
 						if (obj.getAttribute("data-current-selected") === "current-selected") {
 							
@@ -1381,13 +1432,13 @@ function main(){
 										&& 
 										!e.target.checked
 									) {
-										hideElements(obj);					
+										hideElements(obj); 
 									} else if (
 										obj.getAttribute("data-сountry-of-origin") === e.target.getAttribute("id") 
 										&& 
 										e.target.checked
 									) {
-										showElements(obj);
+										showElements(obj); 
 									}; 
 									break; 
 								case "year-of-manufacture": 
@@ -1396,13 +1447,13 @@ function main(){
 										&& 
 										!e.target.checked
 									) {
-										hideElements(obj);					
+										hideElements(obj);
 									} else if (
 										obj.getAttribute("data-year-of-manufacture") === e.target.getAttribute("id") 
 										&& 
 										e.target.checked
 									) {
-										showElements(obj);
+										showElements(obj); 
 									};  
 									break; 
 								case "material": 
@@ -1411,7 +1462,7 @@ function main(){
 										&& 
 										!e.target.checked
 									) {
-										hideElements(obj);					
+										hideElements(obj); 
 									} else if (
 										obj.getAttribute("data-material") === e.target.getAttribute("id") 
 										&& 
@@ -1423,18 +1474,226 @@ function main(){
 							}; 
 						};  
 					}); 
-					manageLotsPreviewsPages();
+
+ 					manageLotsPreviewsPages();    
 					
 					e.preventDefault();
 				}, false); 
-			});  
+			}); 
 		}; 
 		
-		manageAsideFlitersList(); 
+ 		manageLotsPreviewsPages();   
+	
+		function manageLotsPreviewsPages() {
+			var visibleLotsPreviews = []; 
+			var currentContentPreviewPage = "1"; 
+						
+			function collectVisibleLotsPreviews() {
+				visibleLotsPreviews = []; 
+					
+				Array.prototype.slice.call(lotsPreviews).forEach(function(obj){ 
+					obj.setAttribute("data-current-preview-page", ""); 
+						
+					if (obj.getAttribute("data-current-selected") === "current-selected" &&  !obj.classList.contains("display-hidden")) {
+						obj.setAttribute("data-current-preview-page", Math.ceil((i + 1) / 6)); 
+						visibleLotsPreviews.push(obj); 
+					}; 
+				});  
+				
+				for (var i = 0; i < visibleLotsPreviews.length; i += 1) {
+					visibleLotsPreviews[i].setAttribute("data-current-preview-page", Math.ceil((i + 1) / 6)); 
+				}; 
+			}; 
+			
+			collectVisibleLotsPreviews(); 
+
+ 			function showCurrentContentPage() {                                                                   
+				visibleLotsPreviews.forEach(function(obj){	
+					if (obj.getAttribute("data-current-preview-page") !== currentContentPreviewPage) {
+						obj.classList.add("preview_display-hidden"); 
+					} else if (obj.getAttribute("data-current-preview-page") === currentContentPreviewPage) {
+						obj.classList.remove("preview_display-hidden"); 
+					}; 
+				}); 
+			}; 
+			
+ 			showCurrentContentPage();                                                                                
+						
+			var contentPreviewPages = Math.ceil(visibleLotsPreviews.length / 6); 
+			var fragment = document.createDocumentFragment(); 
+			
+			for (var i = 1; i <= contentPreviewPages; i += 1) {
+				var contentPreviewPage = document.createElement("button");
+				
+				contentPreviewPage.classList.add("content-preview-page"); 
+				contentPreviewPage.setAttribute("type", "button"); 
+				contentPreviewPage.setAttribute("data-current-preview-page", i); 
+				contentPreviewPage.innerHTML = i; 
+				
+				fragment.appendChild(contentPreviewPage); 
+			}; 
+			
+ 			lotsPreviewsPagesBlock.innerHTML = ""; 		
+			lotsPreviewsPagesBlock.appendChild(fragment);  
+						
+			Array.prototype.slice.call(lotsPreviewsPages).forEach(function(currentPage){
+				currentPage.addEventListener("click", function(e) {
+					currentContentPreviewPage = e.target.getAttribute("data-current-preview-page");
+					
+ 					showCurrentContentPage();                                                                    
+					
+					e.preventDefault(); 
+				}, false); 
+			}); 
+		}; 
 	}; 
 
 	
+ 	
+ 	handleEvents(headerSearchButton, showSearchResults);  
+	
+ 	function showSearchResults() {
+		var initialContent = [];
+		var initialContentInformation = [];
+		var fragment = document.createDocumentFragment(); 
+		
+		var searchQuery = headerSearchText.value; 
+		var searchSelectedOption = headerSearchOptions[headerSearchOptions.selectedIndex].getAttribute("data-type"); 
+		
+		var findedLots = []; 
+		
+ 		if (searchQuery === "") {
+			userIssuesMessage.innerHTML = "Вы не ввели поисковый запрос <br> Попробуйте еще раз!"; 
+			clearFormFields(); 
+			return userIssuesMenu();
+		};  
+		
+		subjectOfSearch.innerHTML = "Вы искали: " + searchQuery; 
+					
+		searchQuery = searchQuery.toString().toLocaleLowerCase().replace(/[^\w\u0400-\u04FF]/g, ' ').trim().split(' '); 
+		
+		searchQuery = searchQuery.filter(clearArray); 
+		
+		function clearArray(elem){
+			return /\S/.test(elem);
+		}; 
+		
+		function clearFormFields() {
+			headerSearchText.value = ""; 
+		}; 
+		
+ 		initialContent = JSON.parse(localStorage.getItem("content")); 
+		
+		for (var i = 0; i < initialContent.length; i += 1) {
+			for (var prop in initialContent[i]) {
+				initialContentInformation = initialContent[i][prop].toString().toLocaleLowerCase().replace(/[^\w\u0400-\u04FF]+/ig, ' ').trim().split(' '); 
+				initialContentInformation = initialContentInformation.filter(clearArray); 
+				
+				initialContentInformation.forEach(function(x) {
+					for (var j = 0; j < searchQuery.length; j += 1) {
+						if (searchSelectedOption === "all" && x === searchQuery[j]) {
+							findedLots.push(initialContent[i].lot_number); 
+						} else if (initialContent[i].type === searchSelectedOption && x === searchQuery[j]) {
+							findedLots.push(initialContent[i].lot_number); 
+						};  
+					}; 
+				});
+			};
+		};
+		
+		if (findedLots.length === 0) {
+			userIssuesMessage.innerHTML = "По Вашему запросу ничего не найдено <br> Попробуйте еще раз!"; 
+			clearFormFields(); 
+			return userIssuesMenu();
+		}; 
+		
+		function trimUnique(arr) {
+			var seen = {}; 
+			
+			arr.sort(compare); 
+			
+			function compare(a,b) {
+				return (a - b); 
+			}; 
+			
+			return arr.filter(function(x) {
+				if (seen[x]) {
+					return; 
+				}; 
+				
+				seen[x] = true; 
+				
+				return x; 
+			}); 
+		};  
+		
+		findedLots = trimUnique(findedLots); 
+		
+ 		for (var i = 0; i < findedLots.length; i += 1) {
+			for (var j = 0; j < initialContent.length; j += 1) {
+				if (initialContent[j].lot_number === findedLots[i]) {
+					var lotSearchPreview = document.createElement("div"); 
+					
+					lotSearchPreview.classList.add("search-result"); 
+					lotSearchPreview.setAttribute("data-lot", initialContent[j].lot_number); 
+					lotSearchPreview.innerHTML = searchResultTemplate; 
+					lotSearchPreview.getElementsByClassName("search-result_lot-image")[0].src = initialContent[j].image_1_src; 
+					lotSearchPreview.getElementsByClassName("search-result_lot-information_description")[0].innerHTML = initialContent[j].title; 
+					lotSearchPreview.getElementsByClassName("search-result_lot_starting-price")[0].innerHTML = initialContent[j].starting_price; 
+					lotSearchPreview.getElementsByClassName("search-result_lot_timer")[0].innerHTML = initialContent[j].timer; 
+					
+					fragment.appendChild(lotSearchPreview);  
+				}; 
+			};
+		}; 
+		
+		searchResultsContainer.innerHTML = ""; 
+		searchResultsContainer.appendChild(fragment);   
+		
+		clearFormFields(); 
+		
+		handleEvents(returnToMainPage, showMainPage); 
+ 				
+ 		manageSearchPreviews(); 
+		
+ 		showSearchResultsPage();	   
+	}; 
+	
+	function manageSearchPreviews() {
+		var currentLot;
+		var selectedLotPage; 
+						
+		Array.prototype.slice.call(searchPreviews).forEach(function(obj){
+			obj.addEventListener("click", function(e) {
+				if (obj.hasAttribute("data-lot")) {
+					currentLot = obj.getAttribute("data-lot"); 
+				}; 
+				
+				Array.prototype.slice.call(lotsPages).forEach(function(obj){
+					if (obj.getAttribute("data-lot") === currentLot) {
+						obj.getElementsByClassName("breadcrumbs")[0].innerHTML = ""; 
+						obj.getElementsByClassName("breadcrumbs")[0].innerHTML = lotAfterSearchTemplate;   
+						selectedLotPage = obj; 
+					}; 
+				});
 
+ 				selectedLotPage.getElementsByClassName("breadcrumbs")[0].innerHTML = lotAfterSearchTemplate; 
+				
+				hideAll(); 
+				showElements(selectedLotPage, mainWrapper, header); 
+				changeHeader(); 
+				setHeight(selectedLotPage); 
+				
+				handleEvents(returnToMainPage, showMainPage); 
+				handleEvents(returnToSearchPage, showSearchResultsPage);  
+				
+				e.preventDefault();  
+			}, false); 
+		});
+	};  
+
+	
+	
 	function addInitialContent(){
 		
 		var arrayOfInitialContent = [
@@ -1452,7 +1711,6 @@ function main(){
 				image_1_src: "../images/Content/Coins/coin-1-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-1-2.jpg", 
 				timer: "00:00:00"
-			/* 	timer: 200 */ //in hours 
 			},
 			{ 
 				type: "coin", 

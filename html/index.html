@@ -49,7 +49,7 @@
 				
 				<div class="landing-page_button-container">
 					<button type="submit" class="button landing-page_button"> 
-						Перейти к покупкам! 
+						Войти! 
 					</button> 
 				</div> 
 			</div> 
@@ -115,32 +115,32 @@
 				<input type="text" class="header_search_text-field" placeholder="Поиск по наименованиям . . ."> 
 				
 				<select class="header_search_options" title="Выберите категорию товаров для поиска"> 				
-					<option selected="selected" value="0">
+					<option selected="selected" value="0" data-type="all">
 						Все категории
 					</option> 
 					
-					<option value="1">
+					<option value="1" data-type="coin">
 						Монеты и медали
 					</option> 
 					
-					<option value="2">
+					<option value="2" data-type="book">
 						Старинные книги
 					</option> 
 					
-					<option value="3">
+					<option value="3" data-type="antique">
 						Антиквариат
 					</option> 
 					
-					<option value="4">
+					<option value="4" data-type="painting">
 						Картины
 					</option> 
 					
-					<option value="5">
+					<option value="5" data-type="postage-stamp">
 						Почтовые марки 
 					</option> 				
 				</select> 
 				
-				<button type="submit" class="button"> 
+				<button type="submit" class="button search-button"> 
 					Поиск
 				</button> 				
 			</form> 		
@@ -186,11 +186,14 @@
 			</nav> 
 			
 			<div class="main-page_lots-preview"> 
-			</div> 		
+			</div> 
+			
+			<div class="content-preview-pages">
+			</div>
 		</div> 	
 	</section> 
 		
-	
+
 	<section class="sign-in display-hidden interactive"> 
 		<div class="sign-in_form display-hidden interactive">		
 			<nav class="sign-in_form_navigation">
@@ -239,8 +242,7 @@
 			</button> 
 		</div> 
 	</div> 
-	
-	
+
 	
 	<section class="register display-hidden interactive"> 
 		<div class="register_form display-hidden interactive">
@@ -307,7 +309,6 @@
 			</button> 
 		</div> 
 	</div> 
-	
 
 	
 	<section class="contacts display-hidden interactive"> 
@@ -360,8 +361,48 @@
 			</div> 
 		</div> 
 	</section> 
-		
 
+	
+	<section class="search-results display-hidden interactive">  
+		<div class="breadcrumbs"> 
+			<button type="button" class="breadcrumbs_button return-to-main_button">  
+				<div>  
+					Главная  
+				</div>   
+			</button>  
+			
+			<div class="breadcrumbs_arrow">  
+			</div>  
+			
+			<button type="button" class="breadcrumbs_button return-to-search_button">  
+				<div>  
+					Результаты поиска 
+				</div>   
+			</button>  
+						
+			<div class="breadcrumbs_arrow">  
+			</div>  
+			
+			<div class="breadcrumbs_current"> 
+				Результаты поиска 
+			</div>   
+		</div> 
+				
+		<h1 class="heading_1"> 
+			Результаты поиска
+		</h1>  
+		
+		<h2 class="heading_2 subject-of-search">
+			Вы искали: 
+		</h2> 
+		
+		<div class="search-results_display">
+			<div class="search-results_container">
+			</div>   
+		</div>   
+	</section> 
+
+	
 	<footer class="footer"> 			
 		<div class="footer_socials">		
 			<div class="footer_socials_wrap">
@@ -394,8 +435,7 @@
 		</div> 					
 	</footer> 
 
-
-
+	
 <div class="page_blur display-hidden interactive"> 
 </div>
 

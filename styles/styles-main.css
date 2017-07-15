@@ -472,6 +472,7 @@
 }
 
 .header_search_text-field {
+	outline: none; 
 	height: 38px; 
 	width: 100%;
 	text-align: left; 
@@ -486,13 +487,12 @@
 } 
 
 .header_search_text-field:focus {
-	-webkit-appearance: none; 
-	appearance: none; 
 	outline: none; 
 	border-color: rgb(30, 30, 30); 
 }
 
 .header_search_options {
+	outline: none; 
 	height: 40px; 
 	width: 40%; 
 	border: 1px solid rgb(221, 221, 221); 
@@ -508,11 +508,12 @@
 } 
 
 .header_search_options:hover {
+	outline: none; 
 	cursor: pointer;
 }
 
 .header_search_options:focus {
-	border-color: rgb(120, 120, 120); 
+	border-color: rgb(30, 30, 30); 
 	border-left-color: rgb(239, 239, 239); 
 }
 
@@ -905,7 +906,7 @@
 
 .content-preview-pages {
 	padding: 0; 
-	margin: 20px; 
+	margin: 10px; 
 	width: 100%; 
 	height: auto; 
 	display: flex; 
@@ -918,18 +919,39 @@
 	-ms-align-items: center; 
 	align-content: center; 	
 	-ms-align-content: center;
-}
+} 
 
 .content-preview-page {
-	margin: 0 10px; 
-	width: auto; 
-	height: auto; 
-	color: blue; 
+	margin: 0 5px; 
+	width: 30px; 
+	height: 30px; 
+	color: rgb(0, 0, 205); 
 	font-size: 1.2em; 
+	text-align: center; 
+	background: none; 
+	-webkit-appearance: none; 
+	appearance: none; 
+	outline: none;
+	border: none; 
 }
 
 .content-preview-page:hover {
 	cursor: pointer; 
+	background-color: rgb(190, 190, 190); 
+	text-decoration: underline; 
+	-webkit-appearance: none; 
+	appearance: none; 
+	outline: none;
+	border: none; 
+}
+
+.content-preview-page:active {
+	background-color: rgb(150, 150, 150); 
+	text-decoration: underline; 
+	-webkit-appearance: none; 
+	appearance: none; 
+	outline: none;
+	border: none; 
 }
 
 
@@ -1480,12 +1502,12 @@
 }
 
 .breadcrumbs_arrow {
-  width: 0; 
-  height: 0; 
-  margin: 0 5px; 
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 10px solid rgb(40, 40, 40);
+	width: 0; 
+	height: 0; 
+	margin: 0 5px; 
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 10px solid rgb(40, 40, 40);
 }
 
 .breadcrumbs_current {
@@ -1887,8 +1909,6 @@
 
 .search-results {
 	width: 100%; 
-	height: auto; 
-	min-height: 100%; 
 	padding: 0; 
 	margin: 0 auto; 
 	background-color: rgb(246, 246, 246); 	
@@ -1896,7 +1916,106 @@
 
 .search-results_container {
 	margin: 20px; 
+	padding: 0; 
+	border-top: 2px solid rgb(140, 140, 140); 
 	border-bottom: 2px solid rgb(140, 140, 140); 
+	text-align: center; 
+}
+
+.search-result {
+	width: 80%; 
+	height: 100px; 
+	margin: 20px auto; 
+	padding: 0 0 0 5px; 
+	background-color: rgb(255, 255, 255); 
+	display: flex; 
+	display: -ms-flex; 
+	display: flexbox; 
+	justify-content: space-between; 
+	-ms-justify-content: space-between; 
+	align-items: flex-start;
+	-ms-align-items: flex-start; 
+	align-content: flex-start; 
+	-ms-align-content: flex-start;
+	border-right: 1px solid rgb(190, 190, 190); 
+	border-left: 1px solid rgb(190, 190, 190); 
+} 
+
+.search-result:hover {
+	padding: 0 0 0 1px; 
+	border-left: 5px solid rgb(0, 147, 120); 
+}
+
+.search-result_lot_image-window {
+	padding: 1px; 
+	margin: 0 15px 0 5px; 
+} 
+
+.search-result_lot_image-window:hover {
+	padding: 0; 
+	border: 1px solid rgb(220, 220, 220); 
+	border-radius: 3px; 
+}
+
+.search-result_lot-image {
+	margin: auto;
+	padding: 0; 
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100px;
+	text-align: center;
+}
+					
+.search-result_lot-information {
+	padding: 0; 
+	margin: 0 5px 0 0; 
+	vertical-align: top; 
+	text-align: left;
+}
+
+.search-result_lot-information_description {
+	padding: 0; 
+	margin: 5px 0; 
+	font-size: 1.2em; 
+	font-weight: bold; 
+}
+ 					
+.search-result_lot_starting-price {
+	padding: 0; 
+	margin: 5px 0; 
+	font-size: 1.2em; 
+	font-weight: bold; 
+}
+
+.search-result_lot_timer_wrapper {
+	margin: 0; 
+	padding: 0; 
+	height: 100%; 
+	width: 30%; 
+	display: flex; 
+	display: -ms-flex; 
+	display: flexbox; 
+	justify-content: center; 
+	-ms-justify-content: center; 
+	align-items: center;
+	-ms-align-items: center; 
+	align-content: center; 
+	-ms-align-content: center;
+}
+
+.search-result_lot_timer {
+	padding: 0; 
+	margin: 5px 0; 
+	line-height: 2.2em; 
+	height: 40px; 
+	width: 100px; 
+	text-align: center; 
+	font-size: 1.2em; 
+	font-weight: bold; 
+	color: rgb(252,138,21); 
+	border: 1px solid rgb(50,50,50); 
+	border-radius: 3px; 
 }
 
 
@@ -2057,6 +2176,14 @@
 }
 
 .display-hidden {
+	position: absolute; 
+	overflow: hidden; 
+	z-index: 10; 
+	top: -9999px; 
+	left: -9999px; 
+} 
+
+.preview_display-hidden {
 	position: absolute; 
 	overflow: hidden; 
 	z-index: 10; 
