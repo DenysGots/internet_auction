@@ -11,7 +11,7 @@
 
 
 function main(){ 
-
+	
 	var landingPage = document.getElementsByClassName("landing-page")[0]; 
 	var landingPageButton = document.getElementsByClassName("landing-page_button"); 
 	var landingPageLeftScroll = document.getElementsByClassName("landing-page_left-scroll_button")[0]; 
@@ -33,19 +33,24 @@ function main(){
 	var userProfileButton = document.getElementsByClassName("user-profile-button"); 
 	var userLogOutButton = document.getElementsByClassName("user-log-out-button"); 
 	
-	var mainPage = document.getElementsByClassName("main-page")[0]; 
+	var mainPage = document.getElementsByClassName("main-page")[0]; 	
 	var mainPageMainFilters = document.getElementsByClassName("main-page_lots-groups_button"); 
+	var returnToMainPage = document.getElementsByClassName("return-to-main_button"); 
+	
 	var filtersList = document.getElementsByClassName("filters-list")[0]; 
 	var filtersListMenu = document.getElementsByClassName("filters-list_filters")[0]; 
 	var filtersListCheckboxes = document.getElementsByClassName("filters-list_checkbox"); 
-	
 	var filtersListButton = document.getElementsByClassName("filters-list_button")[0]; 
+	
 	var lotsPreviewWrapper = document.getElementsByClassName("main-page_lots-preview")[0]; 
 	var lotsPreviews = document.getElementsByClassName("main-page_lot");  
 	var lotsPreviewsPagesBlock = document.getElementsByClassName("content-preview-pages")[0]; 
 	var lotsPreviewsPages = document.getElementsByClassName("content-preview-page"); 
-	var returnToMainPage = document.getElementsByClassName("return-to-main_button"); 
-			
+	
+	var lotsPages = document.getElementsByClassName("lot-page"); 
+	var lotPageMainImage = document.getElementsByClassName("lot-page_main-image"); 
+	var lotPageImages = document.getElementsByClassName("lot-page_image-preview"); 
+				
 	var signInPage = document.getElementsByClassName("sign-in")[0]; 
 	var signInForm = document.getElementsByClassName("sign-in_form")[0]; 
 	var signInFormLogin = document.getElementsByClassName("sign-in_form_login")[0]; 
@@ -69,6 +74,8 @@ function main(){
 	
 	var userIssues = document.getElementsByClassName("user-issues")[0]; 
 	var userIssuesMessage = document.getElementsByClassName("user-issues_message")[0]; 
+	var userNewLotIssues = document.getElementsByClassName("user-new-lot-issues")[0]; 
+	var userNewLotIssuesMessage = document.getElementsByClassName("user-new-lot-issues_message")[0]; 
 	var pageBlur = document.getElementsByClassName("page_blur")[0]; 
 	var cancelButton = document.getElementsByClassName("cancel-button"); 
 	
@@ -79,18 +86,28 @@ function main(){
 	var subjectOfSearch = document.getElementsByClassName("subject-of-search")[0]; 
 	var searchPreviews = document.getElementsByClassName("search-result"); 
 	var returnToSearchPage = document.getElementsByClassName("return-to-search_button"); 
-	
-	var lotsPages = document.getElementsByClassName("lot-page"); 
-	var lotPageMainImage = document.getElementsByClassName("lot-page_main-image"); 
-	var lotPageImages = document.getElementsByClassName("lot-page_image-preview"); 
-	
+		
 	var usersProfilesPages = document.getElementsByClassName("user-profile"); 
 	var userProfileCreateLotButton = document.getElementsByClassName("user-profile_create-lot_button"); 
+	var userCreateNewLotButton = document.getElementsByClassName("button_create-lot"); 
+	var userProfileLots = document.getElementsByClassName("user-profile_lots-list")[0]; 
+	var userProfileLotsPreviews = document.getElementsByClassName("user-lot_preview"); 
 	
 	var usersNewLotPages = document.getElementsByClassName("user_create-lot"); 
 	var returnToUserProfileButton = document.getElementsByClassName("return-to-user-profile-button"); 
+ 	var userCreateLotType = document.getElementsByClassName("user_create-lot_type")[0];  
+	var userCreateLotTitle = document.getElementsByClassName("user_create-lot_title")[0];  
+	var userCreateLotDescription = document.getElementsByClassName("user_create-lot_description")[0];  
+	var userCreateLotOrigin = document.getElementsByClassName("user_create-lot_country-of-origin")[0];  
+	var userCreateLotAge = document.getElementsByClassName("user_create-lot_age")[0];  
+	var userCreateLotMaterial = document.getElementsByClassName("user_create-lot_material")[0];  
+	var userCreateLotPrice = document.getElementsByClassName("user_create-lot_starting-price")[0];  
+	var userCreateLotTime = document.getElementsByClassName("user_create-lot_auction-time")[0];  
+	var userCreateLotOrigin_data = document.getElementsByClassName("user_create-lot_country-of-origin_data")[0];  
+	var userCreateLotMaterial_data = document.getElementsByClassName("user_create-lot_material_data")[0];   
 	
-	var auctionPage = document.getElementsByClassName("auction")[0]; 
+	var userAuctionPage = document.getElementsByClassName("auction")[0]; 
+	var placeBetButton = document.getElementsByClassName("button_place-a-bet"); 
 	
 	var footer = document.getElementsByClassName("footer")[0]; 
 	
@@ -172,11 +189,11 @@ function main(){
 					'Осталось времени:' + 
 				'</p>' + 
 						
-				'<div class="lot-page_timer">' + 
+				'<div class="lot-page_timer lot-timer">' + 
 					'00:00:00' +
 				'</div>' + 
 						
-				'<p class="miscellaneous-text">' +
+				'<p class="miscellaneous-text text_user-place-a-bet">' +
 					'Ваша ставка:' + 
 				'</p>' + 
 						
@@ -226,6 +243,29 @@ function main(){
 		'<div class="breadcrumbs_current">' +
 			'Страница лота' +
 		'</div>';  	
+		
+	var lotFromProfileTemplate = 
+		'<button type="button" class="breadcrumbs_button return-to-main_button">' +
+			'<div>' +
+				'Главная' +
+			'</div>' + 
+		'</button>' + 
+		
+		'<div class="breadcrumbs_arrow return-to-search_arrow">' +   
+		'</div>' +
+			
+		'<button type="button" class="breadcrumbs_button return-to-user-profile-button">' +   
+			'<div>' +  
+				'Мой профиль' +  
+			'</div>' +   
+		'</button>' +  
+					
+		'<div class="breadcrumbs_arrow return-to-search_arrow">' +   
+		'</div>' + 
+		
+		'<div class="breadcrumbs_current">' +
+			'Страница лота' +
+		'</div>';  
 	
 	var lotPreviewTemplate = 	
 		'<div class="main-page_lot_image-window">' +    
@@ -247,11 +287,11 @@ function main(){
 				'Осталось времени:' +    
 			'</p>' +    
 			
-			'<div class="main-page_lot_timer">' +    
+			'<div class="main-page_lot_timer lot-timer">' +    
 				'00:00:00' +   
 			'</div>' +    
 			
-			'<p class="miscellaneous-text">' +   
+			'<p class="miscellaneous-text text_user-place-a-bet">' +   
 				'Ваша ставка:' +    
 			'</p>' +    
 			
@@ -353,27 +393,35 @@ function main(){
 				
 				'<div class="user_create-lot_type_container">' +  
 					'<select class="user_create-lot_type" title="Укажите тип предмета">' +   
-						'<option selected="selected" value="coins">' +  
+						'<option selected="selected" value="coins" data-type="coin">' +  
 							'Монеты и медали' +  
 						'</option>' +   
 						
-						'<option value="books">' +  
+						'<option value="books" data-type="book">' +  
 							'Старинные книги' +  
 						'</option>' +   
 						
-						'<option value="antique">' +  
+						'<option value="antique" data-type="antique">' +  
 							'Антиквариат' +  
 						'</option>' +   
 						
-						'<option value="paintings">' +  
+						'<option value="paintings" data-type="painting">' +  
 							'Картины' +  
 						'</option>' +   
 						
-						'<option value="postage-stamps">' +  
+						'<option value="postage-stamps" data-type="postage-stamp">' +  
 							'Почтовые марки' +  
 						'</option>' +   
 					'</select>' +   
-				'</div>' +   			
+				'</div>' +   	
+
+				'<p class="miscellaneous-text">' +  
+					'Заголовок:' +   
+				'</p>' +   
+				
+				'<div class="user_create-lot_description_container">' +  
+					'<input type="text" class="user_create-lot_title" placeholder="Шилинг">' +   
+				'</div>' +   
 				
 				'<p class="miscellaneous-text">' +  
 					'Описание предмета:' +   
@@ -384,11 +432,15 @@ function main(){
 				'</div>' +   
 				
 				'<p class="miscellaneous-text">' +  
-					'Страна происхождения:' +   
+					'Страна происхождения (на русском и английском языке):' + 
 				'</p>' +   
 				
 				'<div class="user_create-lot_country-of-origin_container">' +  
 					'<input type="text" class="user_create-lot_country-of-origin" placeholder="Англия">' +   
+				'</div>' +   
+				
+				'<div class="user_create-lot_country-of-origin_container">' +  
+					'<input type="text" class="user_create-lot_country-of-origin_data" placeholder="England">' +   
 				'</div>' +   
 				
 				'<p class="miscellaneous-text">' +  
@@ -397,46 +449,50 @@ function main(){
 				
 				'<div class="user_create-lot_age_container">' +  
 					'<select class="user_create-lot_age" title="Укажите век происхождения">' +   
-						'<option selected="selected" value="XIV">' +  
+						'<option selected="selected" value="XIV век" data-type="14th-century">' +  
 							'XIV' +  
 						'</option>' +   
 						
-						'<option value="XV">' +  
+						'<option value="XV век" data-type="15th-century">' +  
 							'XV' +  
 						'</option>' +   
 						
-						'<option value="XVI">' +  
+						'<option value="XVI век" data-type="16th-century">' +  
 							'XVI' +  
 						'</option>' +  
 						
-						'<option value="XVII">' +  
+						'<option value="XVII век" data-type="17th-century">' +  
 							'XVII' +  
 						'</option>' +  
 						
-						'<option value="XVIII">' +  
+						'<option value="XVIII век" data-type="18th-century">' +  
 							'XVIII' +  
 						'</option>' +   
 						
-						'<option value="XIX">' +  
+						'<option value="XIX век" data-type="19th-century">' +  
 							'XIX' +  
 						'</option>' +   
 						
-						'<option value="XX">' +  
+						'<option value="XX век" data-type="20th-century">' +  
 							'XX' +   
 						'</option>' +  
 						
-						'<option value="XXI">' +  
+						'<option value="XXI век" data-type="21st-century">' +  
 							'XXI' +   
 						'</option>' +  
 					'</select>' +   
 				'</div>' +   
 				
 				'<p class="miscellaneous-text">' +  
-					'Материал:' +   
+					'Материал (опционально) (на русском и английском языке):' +   
 				'</p>' +   
 				
 				'<div class="user_create-lot_material_container">' +  
 					'<input type="text" class="user_create-lot_material" placeholder="Золото">' +   
+				'</div>' +   
+				
+				'<div class="user_create-lot_material_container">' +  
+					'<input type="text" class="user_create-lot_material_data" placeholder="Gold">' +   
 				'</div>' +   
 						
 				'<p class="miscellaneous-text">' +  
@@ -462,7 +518,7 @@ function main(){
 				'</p>' +   
 				
 				'<div class="user_create-lot_add-images">' +  
-					'<input type="file" id="download-image_1" class="download-image">' +  
+					'<input type="file" id="download-image_1" class="download-image download-image_1">' +  
 					'</input>' +   
 					
 					'<div class="download-image_wrapper">' +  
@@ -471,7 +527,7 @@ function main(){
 						'</p>' +  
 					'</div>' +  
 					
-					'<input type="file" id="download-image_2" class="download-image">' +  
+					'<input type="file" id="download-image_2" class="download-image download-image_2">' +  
 					'</input>' +   
 					
 					'<div class="download-image_wrapper">' +  
@@ -479,17 +535,53 @@ function main(){
 						'<label for="download-image_2" class="download-image_label">Дополнительное изображение</label>' +   
 						'</p>' +  
 					'</div>' +   
+					
+					'<input type="file" id="download-image_3" class="download-image download-image_3">' +  
+					'</input>' + 
+					
+					'<div class="download-image_wrapper">' +  
+						'<p>' +  
+						'<label for="download-image_3" class="download-image_label">Дополнительное изображение</label>' +   
+						'</p>' +  
+					'</div>' +   
 				'</div>' +  
 				
-				'<div>' +  
-					'<input type="submit" class="button button_create-lot" value="Создать лот!">' +   
-					'</input>' +   
+				'<div>' +   
+					'<button type="button" class="button button_create-lot">' +  
+						'Создать лот!' +  
+					'</button>' +  
 				'</div>' +  
 			'</form>' +  
 		'</div>'; 
 		
+	var userLotPreviewTemplate = 
+		'<div class="user_lot_image-window">' + 
+			'<img src="" alt="" class="user_lot_lot-image">' + 
+		'</div>' + 
+		
+		'<div class="user_lot-information">' + 
+			'<p class="user_lot-information_title">' + 
+			'</p>' + 
+		'</div>'; 
+		
+	var userHistoryPreviewTemplate = 
+		'<div class="user_lot_image-window">' + 
+			'<img src="" alt="" class="user_lot_lot-image">' + 
+		'</div>' + 
+		
+		'<div>' +  
+			'<div class="user_lot-information">' + 
+				'<p class="user_lot-information_title">' + 
+				'</p>' + 
+			'</div>' + 
+			
+			'<div class="user_lot-information_status_wrapper">' + 
+				'<p class="user_lot-information_status">' + 
+				'</p>' + 
+			'</div>' + 
+		'</div>'; 
+		
 	var userAuctionTemplate =
-		'<section class="auction display-hidden interactive">' +   
 		'<div class="breadcrumbs">' +  
 			'<button type="button" class="breadcrumbs_button return-to-main_button">' +  
 				'<div>' +  
@@ -500,7 +592,7 @@ function main(){
 			'<div class="breadcrumbs_arrow">' +  
 			'</div>' +  
 			
-			'<button type="button" class="breadcrumbs_button">' +  
+			'<button type="button" class="breadcrumbs_button return-to-user-profile-button">' +  
 				'<div>' +  
 					'Мой профиль' +  
 				'</div>' +   
@@ -518,8 +610,14 @@ function main(){
 			'Аукцион' +  
 		'</h1>' +   
 		
+		'<h2 class="heading_2 current-lot-title">' +   
+		'</h2>' +  
+		
+		'<h2 class="heading_2 current-lot-starting-price">' +     
+		'</h2>' +  
+		
 		'<h2 class="heading_2">' +   
-			'1 Шилинг 1945 г.' +   
+				'Предложения участников:' +   
 		'</h2>' +  
 		
 		'<div class="auction_participants">' +  
@@ -530,7 +628,6 @@ function main(){
 				
 				'<div class="auction_participant_bet">' +  
 					'<p class="auction_participant_bet_container auction_participant_1_bet">' +  
-					'10.00 USD' +  
 					'</p>' +  
 				'</div>' +  
 			'</div>' +  
@@ -542,19 +639,16 @@ function main(){
 				
 				'<div class="auction_participant_bet">' +  
 					'<p class="auction_participant_bet_container auction_participant_2_bet">' +  
-					'20.00 USD' +  
 					'</p>' +  
 				'</div>' +   
 			'</div>' +  
 			
 			'<div class="auction_participant">' +  
-				'<p class="auction_participant_name auction_participant_3_name">' +  
-					'Вы' +  
+				'<p class="auction_participant_name auction_participant_3_name">' +  +  
 				'</p>' +  
 				
 				'<div class="auction_participant_bet">' +  
 					'<p class="auction_participant_bet_container auction_participant_3_bet">' +  
-					'30.00 USD' +  
 					'</p>' +  
 				'</div>' +   
 			'</div>' +  
@@ -565,17 +659,16 @@ function main(){
 		'</h2>' +   
 		
 		'<div class="auction_participant">' +   
-			'<p class="auction_participant_name auction_participant_3_name">' +  
+			'<p class="auction_participant_name auction_participant_winner">' +  
 				'Вы' +  
 			'</p>' +  
 				
 			'<div class="auction_participant_bet">' +  
-				'<p class="auction_participant_bet_container">' +  
+				'<p class="auction_participant_bet_container auction_participant_winner_bet">' +  
 					'30.00 USD' +  
 				'</p>' +   
 			'</div>' +   
-		'</div>' +  
-		'</section>'; 
+		'</div>';
 
 	var searchResultTemplate = 
 		'<div class="search-result_lot_image-window">' +    
@@ -595,7 +688,7 @@ function main(){
 		'</div>' +         
 		
 		'<div class="search-result_lot_timer_wrapper">' +         
-			'<div class="search-result_lot_timer">' +    
+			'<div class="search-result_lot_timer lot-timer">' +    
 				'00:00:00' +   
 			'</div>' +   
 		'</div>';  
@@ -658,7 +751,7 @@ function main(){
 			document.body.scrollHeight, document.documentElement.scrollHeight,  
 			document.body.offsetHeight, document.documentElement.offsetHeight,
 			document.body.clientHeight, document.documentElement.clientHeight, 
-			window.innerHeight, pageBlur.offsetHeight 										
+			window.innerHeight, pageBlur.offsetHeight 											
 		);
 		
 		var minSectionHeight = documentHeight - headerSignedOut.offsetHeight - footer.offsetHeight; 
@@ -725,33 +818,39 @@ function main(){
 	}; 
 	
 	function showSignInMenu() {
-		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, pageBlur); 
+		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, userNewLotIssues, pageBlur); 
 		showElements(signInPage, pageBlur, signInForm); 
 		signInForm.style.zIndex = "110";  
 	}; 
 	
 	function showRegisterMenu() {
-		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, pageBlur);
+		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, userNewLotIssues, pageBlur);
 		showElements(registerPage, pageBlur, registerForm); 
 		registerForm.style.zIndex = "110";  
 	}; 
 	
 	function signInMessageMenu() {
-		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, pageBlur);
+		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, userNewLotIssues, pageBlur);
 		showElements(pageBlur, signInIssue); 
 		signInIssue.style.zIndex = "110";  
 	}; 
 	
 	function registerMessageMenu() {
-		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, pageBlur);
+		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, userNewLotIssues, pageBlur);
 		showElements(pageBlur, registerIssue); 
 		registerIssue.style.zIndex = "110";  
 	}; 
 	
 	function userIssuesMenu() {
-		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, pageBlur);
+		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, userNewLotIssues, pageBlur);
 		showElements(pageBlur, userIssues); 
 		userIssues.style.zIndex = "110";  
+	}; 
+	
+	function userNewLotIssuesMenu() {
+		hideElements(filtersList, signInPage, signInForm, registerPage, registerForm, registerIssue, signInIssue, userIssues, userNewLotIssues, pageBlur);
+		showElements(pageBlur, userNewLotIssues); 
+		userNewLotIssues.style.zIndex = "110";  
 	}; 
 	
 	function showSearchResultsPage() {
@@ -825,6 +924,9 @@ function main(){
 	handleEvents(registerNewUser, registerUser);
 	
 	function registerUser() {
+		
+/* 		localStorage.removeItem("users");  	  */										
+		
 		var usersList = [];
 		
 		if (!localStorage.getItem("users")) {
@@ -907,13 +1009,11 @@ function main(){
 	}; 
 
 	
-	
 	handleEvents(signInUser, signIn);
 	
 	var currentUser = "logged-out"; 
 	
 	function signIn() {
-		
 		var usersList = [];
 		
 		if (!localStorage.getItem("users")) {
@@ -969,6 +1069,7 @@ function main(){
 			userIssuesMessage.innerHTML = "Добро пожаловать " + currentUser + "!"; 	
 			clearFormFields(); 
 			createUserProfile(); 
+ 			createUserProfilePreviews();  
  			createUserNewLotPage();  
 			return userIssuesMenu(); 
 		};  
@@ -989,8 +1090,8 @@ function main(){
 		elem.classList.add("interactive");
 		elem.setAttribute("data-user", currentUser);
 	}; 
-	
 
+	
 	handleEvents(userProfileButton, showUserProfile); 
 	
 	function showUserProfile() {
@@ -1028,7 +1129,6 @@ function main(){
 	}; 
 
 	
-	
  	handleEvents(userProfileCreateLotButton, showUserNewLotPage); 
 	
 	function showUserNewLotPage() {
@@ -1045,6 +1145,7 @@ function main(){
 		changeHeader(); 
 		setHeight(currentUserNewLotPage); 
 	}; 
+		
 		
 	function createUserNewLotPage() {
 		var fragment = document.createDocumentFragment(); 
@@ -1063,23 +1164,365 @@ function main(){
 		handleEvents(returnToMainPage, showMainPage); 
 		handleEvents(userProfileCreateLotButton, showUserNewLotPage); 
 		handleEvents(returnToUserProfileButton, showUserProfile); 
+		handleEvents(userCreateNewLotButton, createNewLot); 
 	};  
+	
+
+	function createNewLot() {
+ 		var initialContent = []; 
+		
+		var userCreateLotType = document.getElementsByClassName("user_create-lot_type")[0];  
+		var userCreateLotTitle = document.getElementsByClassName("user_create-lot_title")[0];  
+		var userCreateLotDescription = document.getElementsByClassName("user_create-lot_description")[0];  
+		var userCreateLotOrigin = document.getElementsByClassName("user_create-lot_country-of-origin")[0];  
+		var userCreateLotAge = document.getElementsByClassName("user_create-lot_age")[0];  
+		var userCreateLotMaterial = document.getElementsByClassName("user_create-lot_material")[0];  
+		var userCreateLotPrice = document.getElementsByClassName("user_create-lot_starting-price")[0];  
+		var userCreateLotTime = document.getElementsByClassName("user_create-lot_auction-time")[0];  
+		var userCreateLotOrigin_data = document.getElementsByClassName("user_create-lot_country-of-origin_data")[0];  
+		var userCreateLotMaterial_data = document.getElementsByClassName("user_create-lot_material_data")[0];  
+		
+		var userProfileLots = document.getElementsByClassName("user-profile_lots-list")[0]; 
+			
+ 		var selectedType = userCreateLotType[userCreateLotType.selectedIndex].getAttribute("data-type"); 
+		var title = userCreateLotTitle.value.toLowerCase(); 
+		var description = userCreateLotDescription.value.toLowerCase(); 
+		var origin = userCreateLotOrigin.value.toLowerCase(); 
+		var selectedAge = userCreateLotAge[userCreateLotAge.selectedIndex].value; 
+		var material = userCreateLotMaterial.value.toLowerCase(); 
+		var startingPrice = userCreateLotPrice.value.toLowerCase(); 
+		var auctionTime = userCreateLotTime.value.toLowerCase(); 
+		var data_selectedAge = userCreateLotAge[userCreateLotAge.selectedIndex].getAttribute("data-type"); 
+		var data_origin = userCreateLotOrigin_data.value.toLowerCase(); 
+		var data_material = userCreateLotMaterial_data.value.toLowerCase(); 
+		
+		var newLotCharacteristics = [selectedType, title, description, origin, selectedAge, startingPrice, auctionTime, data_selectedAge, data_origin]; 
+		
+  		var userCreateLotImage_1 = document.getElementsByClassName("download-image_1")[0].files[0];  
+		var userCreateLotImage_2 = document.getElementsByClassName("download-image_2")[0].files[0];  
+		var userCreateLotImage_3 = document.getElementsByClassName("download-image_3")[0].files[0];  
+		
+		var image_1, image_2, image_3; 
+		
+		window.URL = window.URL || window.webkitURL; 
+		
+		if (userCreateLotImage_1) {
+			image_1 = window.URL.createObjectURL(userCreateLotImage_1); 
+			
+			image_1.onload = function() {
+				window.URL.revokeObjectURL(this);
+			}; 
+		}; 
+		
+		if (userCreateLotImage_2) {
+			image_2 = window.URL.createObjectURL(userCreateLotImage_2); 
+			
+			image_2.onload = function() {
+				window.URL.revokeObjectURL(this);
+			}; 
+		}; 
+		
+		if (userCreateLotImage_3) {
+			image_3 = window.URL.createObjectURL(userCreateLotImage_3); 
+			
+			image_3.onload = function() {
+				window.URL.revokeObjectURL(this);
+			}; 
+		}; 
+		
+		function clearFormFields() {
+			userCreateLotTitle.value = ""; 
+			userCreateLotDescription.value = ""; 
+			userCreateLotOrigin.value = ""; 
+			userCreateLotMaterial.value = ""; 
+			userCreateLotPrice.value = ""; 
+			userCreateLotTime.value = ""; 
+			userCreateLotOrigin_data.value = ""; 
+			userCreateLotMaterial_data.value = ""; 
+		}; 
+		
+		if (!newLotCharacteristics.every(function(obj) {
+			return (obj !== "" && obj !== undefined); 
+		})) {
+			userNewLotIssuesMessage.innerHTML = "Вы не заполнили форму <br> Попробуйте еще раз!"; 
+			return userNewLotIssuesMenu();
+		}; 
+ 						
+		initialContent = JSON.parse(localStorage.getItem("content")); 
+		
+ 		initialContent.unshift({
+			type: selectedType, 
+			title: title, 
+			description: description,
+			сountry_of_origin: origin, 
+			year_of_manufacture: selectedAge, 
+			material: material, 
+			data_сountry_of_origin: data_origin, 
+			data_year_of_manufacture: data_selectedAge, 
+			data_material: data_material, 
+			starting_price: startingPrice,
+			image_1_src: image_1,  
+			image_2_src: image_2, 
+			image_3_src: image_3,  
+			timer: auctionTime * 24, 
+			user: currentUser
+		}); 
+
+		lotsPreviewWrapper.innerHTML = "";  
+		filtersListMenu.innerHTML = "";  
+		userProfileLots.innerHTML = "";  
+		
+		Array.prototype.slice.call(lotsPages).forEach(function(obj){
+			obj.parentNode.removeChild(obj);
+		});
+		
+		localStorage.setItem("content", JSON.stringify(initialContent)); 
+		
+		createLotsPreviews(); 
+		createLotsPages(); 
+ 		createUserProfilePreviews();  
+		timers(); 
+		
+		clearFormFields();  
+		
+		showMainPage(); 
+	}; 
+
+	
+	function createUserProfilePreviews() {
+		var initialContent = [];
+		var userProfileLots = document.getElementsByClassName("user-profile_lots-list")[0]; 
+		var userProfileHistory = document.getElementsByClassName("user-profile_history-list")[0]; 
+		var fragment = document.createDocumentFragment(); 
+		
+		initialContent = JSON.parse(localStorage.getItem("content")); 
+		
+		initialContent.forEach(function(elem){
+			if (elem.user === currentUser) {
+				var userProfilePreview = document.createElement("div"); 
+				
+				userProfilePreview.classList.add("user-lot_preview"); 
+				userProfilePreview.setAttribute("data-lot", elem.lot_number); 
+				userProfilePreview.setAttribute("user", currentUser); 
+				userProfilePreview.innerHTML = userLotPreviewTemplate; 
+				userProfilePreview.getElementsByClassName("user_lot_lot-image")[0].src = elem.image_1_src; 
+				userProfilePreview.getElementsByClassName("user_lot-information_title")[0].innerHTML = elem.title; 
+				
+				fragment.appendChild(userProfilePreview);  
+			};
+		}); 
+		
+		userProfileLots.innerHTML = ""; 
+		userProfileLots.appendChild(fragment);   
+		
+		fragment = document.createDocumentFragment(); 
+
+		
+		initialContent.forEach(function(elem){
+			if (elem.lot_auction_participants === currentUser) {
+				var userProfilePreview = document.createElement("div"); 
+				
+				userProfilePreview.classList.add("user-lot_preview"); 
+				userProfilePreview.setAttribute("data-lot", elem.lot_number); 
+				userProfilePreview.setAttribute("user", currentUser); 
+				userProfilePreview.innerHTML = userHistoryPreviewTemplate; 
+				userProfilePreview.getElementsByClassName("user_lot_lot-image")[0].src = elem.image_1_src; 
+				userProfilePreview.getElementsByClassName("user_lot-information_title")[0].innerHTML = elem.title; 
+				
+				if (elem.lot_winner === currentUser) {
+					userProfilePreview.getElementsByClassName("user_lot-information_status")[0].innerHTML = "Выиграл"; 
+					userProfilePreview.getElementsByClassName("user_lot-information_status_wrapper ")[0].setAttribute("style", "border: 1px solid rgb(90, 90, 90); background-image: linear-gradient(to bottom, rgb(255, 140, 25), rgb(202, 98, 11));"); 
+				} else {
+					userProfilePreview.getElementsByClassName("user_lot-information_status")[0].innerHTML = "Проиграл"; 
+					userProfilePreview.getElementsByClassName("user_lot-information_status_wrapper ")[0].setAttribute("style", "border: 1px solid rgb(90, 90, 90); background-image: linear-gradient(to bottom, rgb(220, 220, 220), rgb(120, 120, 120));"); 
+				}; 
+				
+				fragment.appendChild(userProfilePreview);  
+			}; 
+		}); 
+		
+		userProfileHistory.innerHTML = ""; 
+		userProfileHistory.appendChild(fragment); 
+
+		manageUserProfilePreviews();
+	}; 
+	
+	function manageUserProfilePreviews() {
+		var currentLot;
+		var selectedLotPage; 
+		var userProfileLotsPreviews = document.getElementsByClassName("user-lot_preview"); 
+						
+		Array.prototype.slice.call(userProfileLotsPreviews).forEach(function(obj){
+			obj.addEventListener("click", function(e) {
+				if (obj.hasAttribute("data-lot")) {
+					currentLot = obj.getAttribute("data-lot"); 
+				}; 
+				
+				Array.prototype.slice.call(lotsPages).forEach(function(obj){
+					if (obj.getAttribute("data-lot") === currentLot) {
+						obj.getElementsByClassName("breadcrumbs")[0].innerHTML = ""; 
+						obj.getElementsByClassName("breadcrumbs")[0].innerHTML = lotFromProfileTemplate;   
+						selectedLotPage = obj; 
+					}; 
+				});
+				
+				hideAll(); 
+				showElements(selectedLotPage, mainWrapper, header); 
+				changeHeader(); 
+				setHeight(selectedLotPage); 
+				
+				handleEvents(returnToMainPage, showMainPage); 
+				handleEvents(returnToUserProfileButton, showUserProfile);
+				
+				e.preventDefault();  
+			}, false); 
+		});
+	}; 
+	
+	function userParticipateInAuction() {
+		var initialContent = [];
+		var fragment = document.createDocumentFragment(); 
+		var auctionPage = document.getElementsByClassName("auction")[0]; 
+		var placeBetButton = document.getElementsByClassName("button_place-a-bet"); 
+		var userBetField = document.getElementsByClassName("user-bet"); 
+		var currentLot;
+		var currentLotStartingPrice;
+		var currentLotTitle;
+		var userBet; 
+		
+		initialContent = JSON.parse(localStorage.getItem("content")); 
+		
+		function addStandartLotAttributes(elem) {
+			elem.classList.add("auction");
+			elem.classList.add("display-hidden");
+			elem.classList.add("interactive");
+		}; 
+		
+		Array.prototype.slice.call(userBetField).forEach(function(obj){
+			obj.addEventListener("click", function(e) {
+				e.stopPropagation(); 
+			}); 
+		}); 
+		
+		Array.prototype.slice.call(placeBetButton).forEach(function(obj){
+			obj.addEventListener("click", function(e) {
+				e.stopPropagation(); 
+				e.preventDefault(); 
+				
+				if (currentUser === "logged-out") {
+					userIssuesMessage.innerHTML = "Для участия в аукционе Вы должны зайти на сайт под своим логином и паролем"; 
+					return userIssuesMenu(); 
+				}; 
+				
+				if (e.target.hasAttribute("data-lot")) {
+					currentLot = parseInt(e.target.getAttribute("data-lot")); 
+				}; 
+
+				var auctionPage = document.createElement("section"); 
+				
+				addStandartLotAttributes(auctionPage); 
+				
+				auctionPage.innerHTML = userAuctionTemplate; 
+				
+				for (var i = 0; i < initialContent.length; i += 1) {
+					if (initialContent[i].lot_number === currentLot) {
+						currentLotTitle = initialContent[i].title; 
+						currentLotStartingPrice = parseFloat(initialContent[i].starting_price.replace(/[^\d.,]/g, '')); 
+					}; 
+				}; 
+				
+				userBet = parseFloat(e.target.parentNode.getElementsByClassName("user-bet")[0].value.replace(/[^\d.,]/g, '')); 
+					
+				if (userBet === "" || userBet === undefined) {
+					userIssuesMessage.innerHTML = "Вы не ввели свою ставку"; 
+					return userIssuesMenu(); 
+				}; 
+				
+				if (userBet < currentLotStartingPrice) {
+					userIssuesMessage.innerHTML = "Нельзя сделать ставку меньше стартовой стоимости"; 
+					return userIssuesMenu(); 
+				}; 
+				
+				auctionPage.getElementsByClassName("current-lot-title")[0].innerHTML = currentLotTitle; 
+				auctionPage.getElementsByClassName("current-lot-starting-price")[0].innerHTML = "Стартовая цена: $" + currentLotStartingPrice; 
+				
+				var participant_1_bet = Math.round(Math.random(currentLotStartingPrice) + currentLotStartingPrice); 
+				var participant_2_bet = Math.round(Math.random(currentLotStartingPrice) + currentLotStartingPrice); 
+				
+				auctionPage.getElementsByClassName("auction_participant_1_bet")[0].innerHTML = "$" + participant_1_bet; 
+				auctionPage.getElementsByClassName("auction_participant_2_bet")[0].innerHTML = "$" + participant_2_bet; 
+				auctionPage.getElementsByClassName("auction_participant_3_bet")[0].innerHTML = "$" + userBet; 
+				auctionPage.getElementsByClassName("auction_participant_3_name")[0].innerHTML = currentUser; 
+				
+				var auctionParticipants = [
+				{
+					participant_name: "Участник 1", 
+					participant_bet: participant_1_bet
+				}, 
+				
+				{
+					participant_name: "Участник 2", 
+					participant_bet: participant_2_bet	
+				}, 
+				{
+					participant_name: currentUser, 
+					participant_bet: userBet
+				} 
+				]; 
+				
+				auctionParticipants.sort(function(a,b){
+					return b.participant_bet - a.participant_bet; 
+				}); 
+
+				auctionPage.getElementsByClassName("auction_participant_winner")[0].innerHTML = auctionParticipants[0].participant_name; 
+				auctionPage.getElementsByClassName("auction_participant_winner_bet")[0].innerHTML = "$" + auctionParticipants[0].participant_bet; 
+								
+				fragment.appendChild(auctionPage);  
+				
+				mainWrapper.insertBefore(fragment, footer); 
+				
+ 				for (var i = 0; i < initialContent.length; i += 1) {
+					if (initialContent[i].lot_number === currentLot) {
+						initialContent[i].lot_status = "lot_closed"; 
+						initialContent[i].lot_auction_participants = currentUser; 
+						initialContent[i].lot_winner = auctionParticipants[0].participant_name;  
+						initialContent[i].timer = 0; 
+					}; 
+				};  
+				
+				localStorage.setItem("content", JSON.stringify(initialContent));
+				
+				createUserProfilePreviews(); 
+				manageUserProfilePreviews(); 
+
+				handleEvents(returnToMainPage, showMainPage);  
+				handleEvents(returnToUserProfileButton, showUserProfile); 
+				
+				showAuctionPage();  
+			}); 
+		}); 
+	}; 
+	
+	function showAuctionPage() {
+		var userAuctionPage = document.getElementsByClassName("auction")[0]; 
+		
+		hideAll(); 
+		showElements(userAuctionPage, mainWrapper, header); 
+		changeHeader(); 
+		setHeight(userAuctionPage); 
+	}; 
 
 	
 	
 	addInitialContent(); 
-	createLotsPages(); 
 	createLotsPreviews(); 
+	createLotsPages(); 
 	
 	function createLotsPages() {
 		var initialContent = [];
 		var fragment = document.createDocumentFragment(); 
 		
-		if (!localStorage.getItem("content")) {
-			localStorage.setItem("content", JSON.stringify(initialContent)); 
-		} else {
-			initialContent = JSON.parse(localStorage.getItem("content")); 
-		}; 
+		initialContent = JSON.parse(localStorage.getItem("content")); 
 		
 		function addStandartLotAttributes(elem) {
 			elem.classList.add("lot-page");
@@ -1092,17 +1535,32 @@ function main(){
 			var lotPage = document.createElement("section"); 
 			
 			addStandartLotAttributes(lotPage); 
+			
+			if (initialContent[i].user) {
+				lotPage.setAttribute("data-user", initialContent[i].user); 
+			}; 
 						
 			lotPage.innerHTML = lotPageTemplate; 
 			
 			lotPage.getElementsByClassName("lot-page_title")[0].innerHTML = initialContent[i].title; 
 			lotPage.getElementsByClassName("lot-page_description")[0].innerHTML = initialContent[i].description; 
-			lotPage.getElementsByClassName("lot-page_main-image")[0].src = initialContent[i].image_1_src; 
-			lotPage.getElementsByClassName("image-1")[0].src = initialContent[i].image_1_src; 
 			lotPage.getElementsByClassName("lot-page_сountry-of-origin")[0].innerHTML = initialContent[i].сountry_of_origin; 
 			lotPage.getElementsByClassName("lot-page_year-of-manufacture")[0].innerHTML = initialContent[i].year_of_manufacture; 
 			lotPage.getElementsByClassName("lot-page_starting-price")[0].innerHTML = initialContent[i].starting_price; 
-			lotPage.getElementsByClassName("lot-page_timer")[0].innerHTML = initialContent[i].timer; 
+			lotPage.getElementsByClassName("lot-page_starting-price")[0].classList.add("starting-price"); 
+			lotPage.getElementsByClassName("button_place-a-bet")[0].setAttribute("data-lot", i + 1); 
+			lotPage.getElementsByClassName("lot-page_timer")[0].setAttribute("data-lot", i + 1); 
+			lotPage.getElementsByClassName("lot-page_enter-price")[0].classList.add("user-bet"); 
+			
+			if (initialContent[i].image_1_src) {
+				lotPage.getElementsByClassName("image-1")[0].src = initialContent[i].image_1_src; 
+				lotPage.getElementsByClassName("lot-page_main-image")[0].src = initialContent[i].image_1_src; 
+			} else {
+				lotPage.getElementsByClassName("image-1_wrapper")[0].classList.add("display-hidden"); 
+				lotPage.getElementsByClassName("lot-page_main-image")[0].classList.add("display-hidden"); 
+				lotPage.getElementsByClassName("lot-page_images-window")[0].setAttribute("style", "position: relative; width: 500px; height: 500px;"); 
+				lotPage.getElementsByClassName("lot-page_main-image-window")[0].setAttribute("style", "position: relative; width: 400px; height: 400px; background-color: rgb(232, 118, 21);"); 
+			}; 
 			
 			if (initialContent[i].image_2_src) {
 				lotPage.getElementsByClassName("image-2")[0].src = initialContent[i].image_2_src; 
@@ -1120,11 +1578,17 @@ function main(){
 				lotPage.getElementsByClassName("lot-page_material")[0].innerHTML = initialContent[i].material; 
 			} else {
 				lotPage.getElementsByClassName("lot-page_material_text")[0].classList.add("display-hidden");
-			}; 			
+			};
 			
-/* 			function timer() {
-				
-			};  */
+			if (initialContent[i].timer !== 0) {
+				lotPage.getElementsByClassName("lot-page_timer")[0].innerHTML = initialContent[i].timer; 
+			} else {
+				lotPage.getElementsByClassName("lot-page_timer")[0].innerHTML = "Торги закончены"; 
+				lotPage.getElementsByClassName("lot-page_timer")[0].setAttribute("style", "background-image: linear-gradient(to bottom, rgb(220, 220, 220), rgb(120, 120, 120)); font-weight: normal; font-size: 1em; color: rgb(0, 0, 0); line-height: 1.2em;");
+				lotPage.getElementsByClassName("button_place-a-bet")[0].setAttribute("type", "hidden"); 
+				lotPage.getElementsByClassName("lot-page_enter-price")[0].setAttribute("type", "hidden"); 
+				lotPage.getElementsByClassName("text_user-place-a-bet")[0].innerHTML = ""; 
+			}; 
 			
 			fragment.appendChild(lotPage); 
 			
@@ -1138,6 +1602,8 @@ function main(){
 		localStorage.setItem("content", JSON.stringify(initialContent)); 
 		
 		handleLotPageImages(); 
+		
+ 		userParticipateInAuction();  
 	}; 
 	
 		
@@ -1168,40 +1634,57 @@ function main(){
 		var initialContent = [];
 		var fragment = document.createDocumentFragment(); 
 		
-		if (!localStorage.getItem("content")) {
-			localStorage.setItem("content", JSON.stringify(initialContent)); 
-		} else {
-			initialContent = JSON.parse(localStorage.getItem("content")); 
-		}; 
+		initialContent = JSON.parse(localStorage.getItem("content")); 
 		
 		function addStandartLotAttributes(elem) {
-			lotPreview.classList.add("main-page_lot"); 
+			elem.classList.add("main-page_lot"); 
 			elem.setAttribute("data-lot", i + 1); 
 			elem.setAttribute("data-type", initialContent[i].type);
 			elem.setAttribute("data-сountry-of-origin", initialContent[i].data_сountry_of_origin);
 			elem.setAttribute("data-year-of-manufacture", initialContent[i].data_year_of_manufacture);
-			elem.setAttribute("data-material", initialContent[i].data_material);
 			elem.setAttribute("data-сountry-of-origin-value", initialContent[i].сountry_of_origin);
 			elem.setAttribute("data-year-of-manufacture-value", initialContent[i].year_of_manufacture);
-			elem.setAttribute("data-material-value", initialContent[i].material);
 			elem.setAttribute("data-current-selected", "current-selected");
+			
+			if (initialContent[i].material && initialContent[i].data_material) {
+				elem.setAttribute("data-material", initialContent[i].data_material);
+				elem.setAttribute("data-material-value", initialContent[i].material);
+			}; 
 		}; 
 		
 		for (var i = 0; i < initialContent.length; i += 1) {
 			var lotPreview = document.createElement("div"); 
 			
 			addStandartLotAttributes(lotPreview); 
+			
+			if (initialContent[i].user) {
+				lotPreview.setAttribute("data-user", initialContent[i].user); 
+			}; 
 						
 			lotPreview.innerHTML = lotPreviewTemplate; 
 			
 			lotPreview.getElementsByClassName("main-page_lot-information_description")[0].innerHTML = initialContent[i].title; 
-			lotPreview.getElementsByClassName("main-page_lot-image")[0].src = initialContent[i].image_1_src; 
 			lotPreview.getElementsByClassName("main-page_lot_starting-price")[0].innerHTML = initialContent[i].starting_price; 
-			lotPreview.getElementsByClassName("main-page_lot_timer")[0].innerHTML = initialContent[i].timer; 
+			lotPreview.getElementsByClassName("main-page_lot_starting-price")[0].classList.add("starting-price"); 
+			lotPreview.getElementsByClassName("button_place-a-bet")[0].setAttribute("data-lot", i + 1); 
+			lotPreview.getElementsByClassName("main-page_lot_timer")[0].setAttribute("data-lot", i + 1); 
+			lotPreview.getElementsByClassName("main-page_lot_enter-price")[0].classList.add("user-bet"); 
 			
-/* 			function timer() {
-				
-			};  */
+			if (initialContent[i].image_1_src) {
+				lotPreview.getElementsByClassName("main-page_lot-image")[0].src = initialContent[i].image_1_src; 
+			} else {
+				lotPreview.getElementsByClassName("main-page_lot_image-window")[0].setAttribute("style", "position: relative; width: 200px; height: 200px; background-color: rgb(232, 118, 21);"); 
+			}; 
+			
+			if (initialContent[i].timer !== 0) {
+				lotPreview.getElementsByClassName("main-page_lot_timer")[0].innerHTML = initialContent[i].timer; 
+			} else {
+				lotPreview.getElementsByClassName("main-page_lot_timer")[0].innerHTML = "Торги закончены"; 
+				lotPreview.getElementsByClassName("main-page_lot_timer")[0].setAttribute("style", "background-image: linear-gradient(to bottom, rgb(220, 220, 220), rgb(120, 120, 120)); font-weight: normal; font-size: 1em; color: rgb(0, 0, 0); line-height: 1.2em;");
+				lotPreview.getElementsByClassName("button_place-a-bet")[0].setAttribute("type", "hidden"); 
+				lotPreview.getElementsByClassName("main-page_lot_enter-price")[0].setAttribute("type", "hidden"); 
+				lotPreview.getElementsByClassName("text_user-place-a-bet")[0].innerHTML = ""; 
+			}; 
 			
 			fragment.appendChild(lotPreview);  
 		};
@@ -1213,7 +1696,10 @@ function main(){
 		createAsideFlitersList();   
 		
  		manageLotsPreviews();  
+		
+		userParticipateInAuction(); 
 	}; 
+	
 	
 	function lotPreviewOnclick() {
 		var currentLot;
@@ -1221,6 +1707,8 @@ function main(){
 						
 		Array.prototype.slice.call(lotsPreviews).forEach(function(obj){
 			obj.addEventListener("click", function(e) {
+				e.preventDefault();  
+				
 				if (obj.hasAttribute("data-lot")) {
 					currentLot = obj.getAttribute("data-lot"); 
 				}; 
@@ -1235,8 +1723,6 @@ function main(){
 				showElements(selectedLotPage, mainWrapper, header); 
 				changeHeader(); 
 				setHeight(selectedLotPage); 
-
-				e.preventDefault();  
 			}, false); 
 		}); 
 	}; 
@@ -1279,7 +1765,7 @@ function main(){
 				
 				if (obj.hasAttribute("data-material") && obj.getAttribute("data-material") !== "undefined") {
 					lotCharacteristicsFilters[2].characteristicFilters.push({
-						value: obj.getAttribute("data-material-value"), 
+						value: obj.getAttribute("data-material-value").toLowerCase(), 
 						data_value: obj.getAttribute("data-material")	
 					}); 
 				}; 
@@ -1549,7 +2035,7 @@ function main(){
 	}; 
 
 	
- 	
+	
  	handleEvents(headerSearchButton, showSearchResults);  
 	
  	function showSearchResults() {
@@ -1570,7 +2056,7 @@ function main(){
 		
 		subjectOfSearch.innerHTML = "Вы искали: " + searchQuery; 
 					
-		searchQuery = searchQuery.toString().toLocaleLowerCase().replace(/[^\w\u0400-\u04FF]/g, ' ').trim().split(' '); 
+		searchQuery = searchQuery.toString().toLocaleLowerCase().replace(/[^\w\u0400-\u04FF]/g, ' ').trim().split(' ');  
 		
 		searchQuery = searchQuery.filter(clearArray); 
 		
@@ -1640,7 +2126,7 @@ function main(){
 					lotSearchPreview.getElementsByClassName("search-result_lot-image")[0].src = initialContent[j].image_1_src; 
 					lotSearchPreview.getElementsByClassName("search-result_lot-information_description")[0].innerHTML = initialContent[j].title; 
 					lotSearchPreview.getElementsByClassName("search-result_lot_starting-price")[0].innerHTML = initialContent[j].starting_price; 
-					lotSearchPreview.getElementsByClassName("search-result_lot_timer")[0].innerHTML = initialContent[j].timer; 
+					lotSearchPreview.getElementsByClassName("search-result_lot_timer")[0].setAttribute("data-lot", initialContent[j].lot_number); 
 					
 					fragment.appendChild(lotSearchPreview);  
 				}; 
@@ -1656,7 +2142,7 @@ function main(){
  				
  		manageSearchPreviews(); 
 		
- 		showSearchResultsPage();	   
+ 		showSearchResultsPage(); 
 	}; 
 	
 	function manageSearchPreviews() {
@@ -1676,8 +2162,6 @@ function main(){
 						selectedLotPage = obj; 
 					}; 
 				});
-
- 				selectedLotPage.getElementsByClassName("breadcrumbs")[0].innerHTML = lotAfterSearchTemplate; 
 				
 				hideAll(); 
 				showElements(selectedLotPage, mainWrapper, header); 
@@ -1692,8 +2176,98 @@ function main(){
 		});
 	};  
 
+		
+	function timers() {
+		var timers = document.getElementsByClassName("lot-timer"); 
+		
+		var currentContent = JSON.parse(localStorage.getItem("content")); 
+		
+		Date.prototype.addDays = function(days) {
+			var dat = new Date(this.valueOf());
+			dat.setDate(dat.getDate() + days);
+			return dat;
+		}; 
+
+		var dat = new Date();
+		
+		Array.prototype.slice.call(timers).forEach(function(obj){
+			var currentLot = parseInt(obj.getAttribute("data-lot"));
+			var timeLeft; 
+			
+			for (var i = 0; i < currentContent.length; i += 1) {
+				if (parseInt(currentContent[i].lot_number) === currentLot) {
+					timeLeft = parseInt(currentContent[i].timer / 24); 
+					
+					var countDownDate = dat.addDays(timeLeft);
+					
+					if (clearInterval(x)) {
+						clearInterval(x); 
+					}; 
+					
+					if (clearInterval(y)) {
+						clearInterval(y); 
+					}; 
+					
+					var distance, days, hours, minutes, seconds; 
+					
+					var x = setInterval(function() {
+
+						var now = new Date().getTime();
+
+						distance = countDownDate - now;
+
+						days = Math.floor(distance / (1000 * 60 * 60 * 24));
+						hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+						minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+						seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+						obj.innerHTML = days + " : " + hours + " : " + minutes + " : " + seconds;
+
+						if (distance < 0) {
+							clearInterval(x);
+							clearInterval(y);
+							obj.innerHTML = "Торги закончены";
+							obj.setAttribute("style", "background-image: linear-gradient(to bottom, rgb(220, 220, 220), rgb(120, 120, 120)); font-weight: normal; font-size: 1em; color: rgb(0, 0, 0); line-height: 2.5em;");
+						
+							Array.prototype.slice.call(lotsPreviews).forEach(function(obj){
+								if(parseInt(obj.getAttribute("data-lot")) === currentLot) {
+									obj.getElementsByClassName("button_place-a-bet")[0].setAttribute("type", "hidden"); 					
+									obj.getElementsByClassName("text_user-place-a-bet")[0].innerHTML = ""; 
+									obj.getElementsByClassName("main-page_lot_enter-price")[0].setAttribute("type", "hidden"); 
+								}; 
+							});
+							
+							Array.prototype.slice.call(lotsPages).forEach(function(obj){
+								if(parseInt(obj.getAttribute("data-lot")) === currentLot) {
+									obj.getElementsByClassName("button_place-a-bet")[0].setAttribute("type", "hidden"); 					
+									obj.getElementsByClassName("text_user-place-a-bet")[0].innerHTML = ""; 
+									obj.getElementsByClassName("lot-page_enter-price")[0].setAttribute("type", "hidden"); 
+								}; 
+							});
+						}; 
+					}, 1000);
+					
+					var y = setInterval(function() {
+						for (var i = 0; i < currentContent.length; i += 1) {
+							if (parseInt(currentContent[i].lot_number) === currentLot) {
+								currentContent[i].timer = parseInt(days * 24); 
+								localStorage.setItem("content", JSON.stringify(currentContent));
+							}; 
+						}; 
+						
+						if (distance < 0) {
+							clearInterval(y);
+						}; 
+					}, 10000); 
+				}; 
+			}; 
+		}); 
+	}; 
 	
-	
+	timers(); 
+			
+
+
 	function addInitialContent(){
 		
 		var arrayOfInitialContent = [
@@ -1710,7 +2284,7 @@ function main(){
 				starting_price: "$6.00",
 				image_1_src: "../images/Content/Coins/coin-1-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-1-2.jpg", 
-				timer: "00:00:00"
+				timer: 24
 			},
 			{ 
 				type: "coin", 
@@ -1725,7 +2299,7 @@ function main(){
 				starting_price: "$7.50",
 				image_1_src: "../images/Content/Coins/coin-2-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-2-2.jpg", 
-				timer: "00:00:00"
+				timer: 100
 			},
 			{ 
 				type: "coin", 
@@ -1740,7 +2314,7 @@ function main(){
 				starting_price: "$7.00",
 				image_1_src: "../images/Content/Coins/coin-3-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-3-2.jpg", 
-				timer: "00:00:00"
+				timer: 200
 			},
 			{ 
 				type: "coin", 
@@ -1755,7 +2329,7 @@ function main(){
 				starting_price: "$34.00",
 				image_1_src: "../images/Content/Coins/coin-4-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-4-2.jpg", 
-				timer: "00:00:00"
+				timer: 300
 			},
 			{ 
 				type: "coin", 
@@ -1770,7 +2344,7 @@ function main(){
 				starting_price: "$34.00",
 				image_1_src: "../images/Content/Coins/coin-5-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-5-2.jpg", 
-				timer: "00:00:00"
+				timer: 150
 			},
 			{ 
 				type: "coin", 
@@ -1785,7 +2359,7 @@ function main(){
 				starting_price: "$51.50",
 				image_1_src: "../images/Content/Coins/coin-6-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-6-2.jpg", 
-				timer: "00:00:00"
+				timer: 220
 			},
 			{ 
 				type: "coin", 
@@ -1800,7 +2374,7 @@ function main(){
 				starting_price: "$52.00",
 				image_1_src: "../images/Content/Coins/coin-7-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-7-2.jpg", 
-				timer: "00:00:00"
+				timer: 110
 			},
 			{ 
 				type: "coin", 
@@ -1815,7 +2389,7 @@ function main(){
 				starting_price: "$10.00",
 				image_1_src: "../images/Content/Coins/coin-8-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-8-2.jpg", 
-				timer: "00:00:00"
+				timer: 50
 			},
 			{ 
 				type: "coin", 
@@ -1830,7 +2404,7 @@ function main(){
 				starting_price: "$500.00",
 				image_1_src: "../images/Content/Coins/coin-9-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-9-2.jpg", 
-				timer: "00:00:00"
+				timer: 80
 			},
 			{ 
 				type: "coin", 
@@ -1845,7 +2419,7 @@ function main(){
 				starting_price: "$115.00",
 				image_1_src: "../images/Content/Coins/coin-10-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-10-2.jpg", 
-				timer: "00:00:00"
+				timer: 90
 			},
 			{ 
 				type: "coin", 
@@ -1860,7 +2434,7 @@ function main(){
 				starting_price: "$20.00",
 				image_1_src: "../images/Content/Coins/coin-11-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-11-2.jpg", 
-				timer: "00:00:00"
+				timer: 34
 			},
 			{ 
 				type: "coin", 
@@ -1875,7 +2449,7 @@ function main(){
 				starting_price: "$22.00",
 				image_1_src: "../images/Content/Coins/coin-12-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-12-2.jpg", 
-				timer: "00:00:00"
+				timer: 12
 			},
 			{ 
 				type: "coin", 
@@ -1890,7 +2464,7 @@ function main(){
 				starting_price: "$25.00",
 				image_1_src: "../images/Content/Coins/coin-13-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-13-2.jpg", 
-				timer: "00:00:00"
+				timer: 260
 			},
 			{ 
 				type: "coin", 
@@ -1905,7 +2479,7 @@ function main(){
 				starting_price: "$18.00",
 				image_1_src: "../images/Content/Coins/coin-14-1.jpg", 
 				image_2_src: "../images/Content/Coins/coin-14-2.jpg", 
-				timer: "00:00:00"
+				timer: 56
 			},
 			{ 
 				type: "book", 
@@ -1919,7 +2493,7 @@ function main(){
 				image_1_src: "../images/Content/Books/book-1-1.jpg", 
 				image_2_src: "../images/Content/Books/book-1-2.jpg", 
 				image_3_src: "../images/Content/Books/book-1-3.jpg", 
-				timer: "00:00:00"
+				timer: 125
 			},
 			{ 
 				type: "book", 
@@ -1933,7 +2507,7 @@ function main(){
 				image_1_src: "../images/Content/Books/book-2-1.jpg", 
 				image_2_src: "../images/Content/Books/book-2-2.jpg", 
 				image_3_src: "../images/Content/Books/book-2-3.jpg", 
-				timer: "00:00:00"
+				timer: 321
 			},
 			{ 
 				type: "book", 
@@ -1947,7 +2521,7 @@ function main(){
 				image_1_src: "../images/Content/Books/book-3-1.jpg", 
 				image_2_src: "../images/Content/Books/book-3-2.jpg", 
 				image_3_src: "../images/Content/Books/book-3-3.jpg", 
-				timer: "00:00:00"
+				timer: 544
 			},
 			{ 
 				type: "book", 
@@ -1961,7 +2535,7 @@ function main(){
 				image_1_src: "../images/Content/Books/book-4-1.jpg", 
 				image_2_src: "../images/Content/Books/book-4-2.jpg", 
 				image_3_src: "../images/Content/Books/book-4-3.jpg", 
-				timer: "00:00:00"
+				timer: 70
 			},
 			{ 
 				type: "book", 
@@ -1975,7 +2549,7 @@ function main(){
 				image_1_src: "../images/Content/Books/book-5-1.jpg", 
 				image_2_src: "../images/Content/Books/book-5-2.jpg", 
 				image_3_src: "../images/Content/Books/book-5-3.jpg", 
-				timer: "00:00:00"
+				timer: 90
 			},
 			{ 
 				type: "antique", 
@@ -1991,7 +2565,7 @@ function main(){
 				image_1_src: "../images/Content/Antique/antique-2-1.jpg", 
 				image_2_src: "../images/Content/Antique/antique-2-2.jpg", 
 				image_3_src: "../images/Content/Antique/antique-2-3.jpg", 
-				timer: "00:00:00"
+				timer: 150
 			},
 			{ 
 				type: "antique", 
@@ -2007,7 +2581,7 @@ function main(){
 				image_1_src: "../images/Content/Antique/antique-3-1.jpg", 
 				image_2_src: "../images/Content/Antique/antique-3-2.jpg", 
 				image_3_src: "../images/Content/Antique/antique-3-3.jpg", 
-				timer: "00:00:00"
+				timer: 112
 			},
 			{ 
 				type: "antique", 
@@ -2023,7 +2597,7 @@ function main(){
 				image_1_src: "../images/Content/Antique/antique-4-1.jpg", 
 				image_2_src: "../images/Content/Antique/antique-4-2.jpg", 
 				image_3_src: "../images/Content/Antique/antique-4-3.jpg", 
-				timer: "00:00:00"
+				timer: 234
 			},
 			{ 
 				type: "antique", 
@@ -2039,7 +2613,7 @@ function main(){
 				image_1_src: "../images/Content/Antique/antique-5-1.jpg", 
 				image_2_src: "../images/Content/Antique/antique-5-2.jpg", 
 				image_3_src: "../images/Content/Antique/antique-5-3.jpg",
-				timer: "00:00:00"
+				timer: 21
 			},
 			{ 
 				type: "painting", 
@@ -2051,7 +2625,7 @@ function main(){
 				data_year_of_manufacture: "20th-century", 
 				starting_price: "$2000.00",
 				image_1_src: "../images/Content/Paintings/painting-1-1.jpg", 
-				timer: "00:00:00"
+				timer: 16
 			},	
 			{ 
 				type: "painting", 
@@ -2063,7 +2637,7 @@ function main(){
 				data_year_of_manufacture: "20th-century", 
 				starting_price: "$3000.00",
 				image_1_src: "../images/Content/Paintings/painting-2-1.jpg", 
-				timer: "00:00:00"
+				timer: 75
 			},	
 			{ 
 				type: "painting", 
@@ -2075,7 +2649,7 @@ function main(){
 				data_year_of_manufacture: "19th-century", 
 				starting_price: "$150.00",
 				image_1_src: "../images/Content/Paintings/painting-3-1.jpg", 
-				timer: "00:00:00"
+				timer: 61
 			},	
 			{ 
 				type: "painting", 
@@ -2087,7 +2661,7 @@ function main(){
 				data_year_of_manufacture: "20th-century", 
 				starting_price: "$200.00",
 				image_1_src: "../images/Content/Paintings/painting-4-1.jpg", 
-				timer: "00:00:00"
+				timer: 38
 			},	
 			{ 
 				type: "painting", 
@@ -2099,7 +2673,7 @@ function main(){
 				data_year_of_manufacture: "19th-century", 
 				starting_price: "$400.00",
 				image_1_src: "../images/Content/Paintings/painting-5-1.jpg", 
-				timer: "00:00:00"
+				timer: 74
 			},
 			{ 
 				type: "postage-stamp", 
@@ -2111,7 +2685,7 @@ function main(){
 				data_year_of_manufacture: "20th-century", 
 				starting_price: "$1.00",
 				image_1_src: "../images/Content/Postage-stamps/postage-stamp-1-1.jpg", 
-				timer: "00:00:00"
+				timer: 101
 			},
 			{ 
 				type: "postage-stamp", 
@@ -2123,7 +2697,7 @@ function main(){
 				data_year_of_manufacture: "20th-century", 
 				starting_price: "$10.00",
 				image_1_src: "../images/Content/Postage-stamps/postage-stamp-2-1.jpg", 
-				timer: "00:00:00"
+				timer: 32
 			},	
 			{ 
 				type: "postage-stamp", 
@@ -2135,7 +2709,7 @@ function main(){
 				data_year_of_manufacture: "19th-century", 
 				starting_price: "$70.00",
 				image_1_src: "../images/Content/Postage-stamps/postage-stamp-3-1.jpg", 
-				timer: "00:00:00"
+				timer: 9
 			},	
 			{ 
 				type: "postage-stamp", 
@@ -2147,7 +2721,7 @@ function main(){
 				data_year_of_manufacture: "19th-century", 
 				starting_price: "$1.50",
 				image_1_src: "../images/Content/Postage-stamps/postage-stamp-4-1.jpg", 
-				timer: "00:00:00"
+				timer: 10
 			},	
 			{ 
 				type: "postage-stamp", 
@@ -2159,10 +2733,15 @@ function main(){
 				data_year_of_manufacture: "20th-century", 
 				starting_price: "$1.00",
 				image_1_src: "../images/Content/Postage-stamps/postage-stamp-5-1.jpg", 
-				timer: "00:00:00"
+				timer: 58
 			}	
 		]; 
 		
-		localStorage.setItem("content", JSON.stringify(arrayOfInitialContent)); 
+/*  		localStorage.removeItem("content"); */   	 													
+		
+		if (!localStorage.getItem("content")) {
+			localStorage.setItem("content", JSON.stringify(arrayOfInitialContent)); 
+		}; 
 	}; 
+
 }; 

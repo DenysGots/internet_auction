@@ -867,7 +867,7 @@
 	margin: 5px 0; 
 	line-height: 2.2em; 
 	height: 40px; 
-	width: 100px; 
+	width: 140px; 
 	text-align: center; 
 	font-size: 1.2em; 
 	font-weight: bold; 
@@ -1553,6 +1553,25 @@
 	border-bottom: 2px solid rgb(140, 140, 140); 
 }
 
+.user-profile_lots-list, 
+.user-profile_history-list, 
+.user-profile_bets-list {
+	background-color: rgb(246, 246, 246);
+	height: auto; 
+	width: 100%;
+	padding: 0; 
+	margin: 0 auto; 
+	display: flex; 
+	display: -ms-flex; 
+	display: flexbox; 
+	flex-wrap: wrap; 
+	justify-content: space-between; 
+	-ms-justify-content: space-between; 
+	align-items: stretch;
+	-ms-align-items: stretch; 
+	align-content: space-between;  
+}
+
 
 .lot-page {
 	width: 100%; 
@@ -1668,7 +1687,7 @@
 	margin: 5px 0; 
 	line-height: 2.2em; 
 	height: 40px; 
-	width: 100px; 
+	width: 140px; 
 	text-align: center; 
 	font-size: 1.2em; 
 	font-weight: bold; 
@@ -1745,9 +1764,12 @@
 	border-color: rgb(120, 120, 120); 
 } 
 
+.user_create-lot_title, 
 .user_create-lot_description, 
 .user_create-lot_country-of-origin, 
+.user_create-lot_country-of-origin_data, 
 .user_create-lot_material, 
+.user_create-lot_material_data, 
 .user_create-lot_starting-price, 
 .user_create-lot_auction-time {
 	height: 38px; 
@@ -1837,6 +1859,145 @@
 {
 	margin: 20px; 
 	border-bottom: 2px solid rgb(140, 140, 140); 
+}
+
+.user-new-lot-issues {
+	position: fixed; 
+	top: 50%; 
+	left: 50%; 
+	transform: translate(-50%, -50%); 
+	margin: 0; 
+	padding: 0; 
+	width: 400px; 
+	height: 270px; 
+	border: 1px solid rgb(204, 204, 204); 
+	background-color: rgb(255, 255, 255); 
+	border-radius: 4px; 
+}
+
+.user-new-lot-issues_message_wraper {
+	margin: 20px 10px; 
+	border: 1.5px solid rgb(232, 118, 21);
+	border-radius: 6px; 
+	width: auto; 
+	min-width: 80% ;
+	min-height: 50%; 
+	max-height: 50%; 
+	display: flex; 
+	display: -ms-flex; 
+	display: flexbox;  
+	flex-wrap: wrap; 
+	justify-content: center; 
+	-ms-justify-content: center; 
+	align-items: center;
+	-ms-align-items: center; 
+	align-content: center; 
+	-ms-align-content: center;
+}
+
+.user-new-lot-issues_message {
+	font-family: 'Roboto', Helvetica, Arial, Sans-Serif; 
+	font-size: 1.4em; 
+	text-align: center; 
+	font-weight: bold; 
+	color: rgb(50, 50, 50); 
+}
+
+.user-new-lot-issues_button_wraper {
+	margin: auto 0 10px 0;
+	min-height: 30%;
+	max-height: 100%;
+	display: flex; 
+	display: -ms-flex; 
+	display: flexbox;  
+	justify-content: space-around; 
+	-ms-justify-content: space-around; 
+	align-items: flex-end;
+	-ms-align-items: flex-end; 
+	align-content: flex-end; 
+	-ms-align-content: flex-end;
+} 
+
+.user-lot_preview {
+	width: 250px; 
+	height: 150px; 
+	margin: 20px; 
+	padding: 0 0 0 5px; 
+	background-color: rgb(255, 255, 255); 
+	display: flex; 
+	display: -ms-flex; 
+	display: flexbox; 
+	justify-content: space-between; 
+	-ms-justify-content: space-between; 
+	align-items: flex-start;
+	-ms-align-items: flex-start; 
+	align-content: flex-start; 
+	-ms-align-content: flex-start;
+	border-right: 1px solid rgb(190, 190, 190); 
+	border-left: 1px solid rgb(190, 190, 190); 
+} 
+
+.user-lot_preview:hover {
+	padding: 0 0 0 1px; 
+	border-left: 5px solid rgb(0, 147, 120); 
+}
+
+.user_lot_image-window {
+	padding: 1px; 
+	margin: 0 15px 0 5px; 
+} 
+
+.user_lot_image-window:hover {
+	padding: 0; 
+	border: 1px solid rgb(220, 220, 220); 
+	border-radius: 3px; 
+}
+
+.user_lot_lot-image {
+	margin: auto;
+	padding: 0; 
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 150px;
+	text-align: center;
+}
+
+.user_lot-information {
+	padding: 0; 
+	margin: 0 5px 0 0; 
+	vertical-align: top; 
+}
+
+.user_lot-information_title{
+	padding: 0; 
+	margin: 5px 0; 
+	font-size: 1.0em; 
+} 
+
+.user_lot-information_status {
+	padding: 0; 
+	margin: 5px 0; 
+	font-size: 1.2em; 
+	font-weight: bold; 
+} 
+
+.user_lot-information_status_wrapper {
+	padding: 0; 
+	margin: 0 5px 0 0; 
+	vertical-align: top; 
+	width: 100px; 
+	height: 45px; 
+	border-radius: 5px; 
+	display: flex; 
+	display: -ms-flex; 
+	display: flexbox; 
+	justify-content: center; 
+	-ms-justify-content: center; 
+	align-items: center;
+	-ms-align-items: center; 
+	align-content: center; 
+	-ms-align-content: center;
 }
 
 
@@ -2146,7 +2307,7 @@
 	cursor: pointer; 
 }
 
-
+ 
 .heading_1 {
 	margin: 40px; 
 	font-family: 'Roboto', Helvetica, Arial, Sans-Serif; 
