@@ -1316,7 +1316,6 @@ function main(){
 		userProfileLots.appendChild(fragment);   
 		
 		fragment = document.createDocumentFragment(); 
-
 		
 		initialContent.forEach(function(elem){
 			if (elem.lot_auction_participants === currentUser) {
@@ -1482,21 +1481,39 @@ function main(){
 				mainWrapper.insertBefore(fragment, footer); 
 				
  				for (var i = 0; i < initialContent.length; i += 1) {
-					if (initialContent[i].lot_number === currentLot) {
+					if (parseInt(initialContent[i].lot_number) === currentLot) {
 						initialContent[i].lot_status = "lot_closed"; 
 						initialContent[i].lot_auction_participants = currentUser; 
 						initialContent[i].lot_winner = auctionParticipants[0].participant_name;  
 						initialContent[i].timer = 0; 
 					}; 
-				};  
-				
-				localStorage.setItem("content", JSON.stringify(initialContent));
-				
+				}; 
+
 				createUserProfilePreviews(); 
 				manageUserProfilePreviews(); 
 
 				handleEvents(returnToMainPage, showMainPage);  
 				handleEvents(returnToUserProfileButton, showUserProfile); 
+				
+				Array.prototype.slice.call(lotsPreviews).forEach(function(obj){
+					if(parseInt(obj.getAttribute("data-lot")) === currentLot) {
+						obj.getElementsByClassName("button_place-a-bet")[0].setAttribute("type", "hidden"); 					
+						obj.getElementsByClassName("text_user-place-a-bet")[0].innerHTML = ""; 
+						obj.getElementsByClassName("main-page_lot_enter-price")[0].setAttribute("type", "hidden"); 
+						obj.getElementsByClassName("lot-timer")[0].innerHTML = ""; 
+					}; 
+				});
+				
+				Array.prototype.slice.call(lotsPages).forEach(function(obj){
+					if(parseInt(obj.getAttribute("data-lot")) === currentLot) {
+						obj.getElementsByClassName("button_place-a-bet")[0].setAttribute("type", "hidden"); 					
+						obj.getElementsByClassName("text_user-place-a-bet")[0].innerHTML = ""; 
+						obj.getElementsByClassName("lot-page_enter-price")[0].setAttribute("type", "hidden"); 
+						obj.getElementsByClassName("lot-timer")[0].innerHTML = ""; 
+					}; 
+				}); 
+				
+				localStorage.setItem("content", JSON.stringify(initialContent));
 				
 				showAuctionPage();  
 			}); 
