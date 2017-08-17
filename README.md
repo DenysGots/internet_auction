@@ -9,7 +9,7 @@ Specified requirements:
 - SPA
 - Landing page, Slideshow, Parallax 
 - Website content: sort, filter, site search 
-- Contacts page with Google map 
+- Contacts page with Google maps link  
 - User registration 
 
 Project theme requirements: 
