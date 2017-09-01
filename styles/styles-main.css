@@ -8,7 +8,6 @@
 	font-family: 'Roboto', Helvetica, Arial, Sans-Serif; 
 	color: #333; 
 	background-color: #fff; 
-	
 	width: 100%; 
 	height: 100%; 
 	margin: 0 auto; 
@@ -448,7 +447,8 @@
 }
 
 .header_navigation {
-	height: auto; 
+/* 	height: auto;  */
+	height: 30px;
 	width: auto; 
 	padding: 0; 
 	margin: auto 0 3px auto; 
@@ -754,6 +754,7 @@
 	border-radius: 0 6px 6px 0; 
 	background-color: #fff; 
 	height: auto; 
+	min-height: 300px; 
 	width: 270px; 
 	z-index: 10; 
 	-webkit-transition: left 1s; 
@@ -940,10 +941,8 @@
 	display: flex; 
 	-ms-flex-wrap: wrap; 
 	    flex-wrap: wrap; 
-	-ms-justify-content: space-between; 
-	-webkit-box-pack: justify; 
-	    -ms-flex-pack: justify; 
-	        justify-content: space-between; 
+	-ms-flex-pack: distribute; 
+	    justify-content: space-around; 
 	-ms-align-items: stretch; 
 	-webkit-box-align: stretch; 
 	    -ms-flex-align: stretch; 
@@ -1082,7 +1081,7 @@
 
 .content-preview-pages {
 	padding: 0; 
-	margin: 10px; 
+	margin: 20px; 
 	width: 100%; 
 	height: auto; 
 	display: -ms-flex; 
@@ -1743,6 +1742,7 @@
 
 .contacts {
 	width: 100%; 
+	height: calc(100% - 33px - 102px); 
 	padding: 0; 
 	margin: 0 auto; 
 	background-color: #f6f6f6; 
