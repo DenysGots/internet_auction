@@ -11,6 +11,7 @@ Specified requirements:
 - Website content: sort, filter, site search 
 - Contacts page with Google maps link  
 - User registration 
+- No back-end 
 
 Project theme requirements: 
 - View, search and purchase of lots (participate in the auction)
