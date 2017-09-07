@@ -264,6 +264,7 @@ function main() {
 		handleEvents(landingPageButton, pauseSlideshow);
 	}; 
 	
+/* 	localStorage.removeItem("content");   */
 	function manageInitialContent() {
 		if (checkLocalStorageAvailability() === true) {
 			if (localStorage.getItem("content")) {
@@ -277,6 +278,7 @@ function main() {
 		}; 
 	};  
 		
+/* 	localStorage.removeItem("users"); */
 	function manageUsers() {
 		if (checkLocalStorageAvailability() === true) {
 			if (!localStorage.getItem("users")) {
@@ -1542,6 +1544,14 @@ function main() {
 						hours, 
 						minutes, 
 						seconds;
+					
+/* 					if (clearInterval(setLotTimer)) {                        //Is there need in this? Check! 
+						clearInterval(setLotTimer); 
+					}; 
+					
+					if (clearInterval(saveLotTimer)) {
+						clearInterval(saveLotTimer); 
+					};  */
 					
 					var setLotTimer = setInterval(function () {
 						var now = new Date().getTime();

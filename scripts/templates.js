@@ -1,3 +1,5 @@
+"use strict"; 
+
 var lotPageTemplate = 
 	'<div class="breadcrumbs">' +
 		'<button type="button" class="breadcrumbs_button return-to-main_button">' +
