@@ -13,6 +13,7 @@ Specified requirements:
 - Contacts page with Google maps link  
 - User registration 
 - No back-end, data is stored in localstorage (if available)
+- Desktop layout only
 
 Project theme requirements: 
 - View, search and purchase of lots (participate in the auction)
