@@ -7,7 +7,8 @@ Specified requirements:
 - No libraries used 
 - Cross-browser compatibility with IE10 including 
 - SPA
-- Landing page, Slideshow, Parallax 
+- Landing page, Slideshow, Parallax
+- Pagination
 - Website content: sort, filter, site search 
 - Contacts page with Google maps link  
 - User registration 
