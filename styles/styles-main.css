@@ -1934,7 +1934,7 @@
 	    align-content: flex-start;
 }
 
-.lot-page_images-window{
+.lot-page_images-window {
 	padding: 0;
 	margin: 0 auto;
 }
@@ -2155,7 +2155,6 @@
 	height: 38px;
 	width: 30%;
 	text-align: center;
-	margin: 0;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	color: #646464;
