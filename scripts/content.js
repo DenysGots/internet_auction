@@ -12,8 +12,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "20th-century",
 		data_material: "silver",
 		starting_price: "$6.00",
-		image_1_src: "/images/Content/Coins/coin-1-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-1-2.jpg",
+		image_1_src: "images/Content/Coins/coin-1-1.jpg",
+		image_2_src: "images/Content/Coins/coin-1-2.jpg",
 		timer: 24
 	},
 	{
@@ -27,8 +27,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "20th-century",
 		data_material: "silver",
 		starting_price: "$7.50",
-		image_1_src: "/images/Content/Coins/coin-2-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-2-2.jpg",
+		image_1_src: "images/Content/Coins/coin-2-1.jpg",
+		image_2_src: "images/Content/Coins/coin-2-2.jpg",
 		timer: 100
 	},
 	{
@@ -42,8 +42,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "20th-century",
 		data_material: "silver",
 		starting_price: "$7.00",
-		image_1_src: "/images/Content/Coins/coin-3-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-3-2.jpg",
+		image_1_src: "images/Content/Coins/coin-3-1.jpg",
+		image_2_src: "images/Content/Coins/coin-3-2.jpg",
 		timer: 200
 	},
 	{
@@ -57,8 +57,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "19th-century",
 		data_material: "copper",
 		starting_price: "$34.00",
-		image_1_src: "/images/Content/Coins/coin-4-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-4-2.jpg",
+		image_1_src: "images/Content/Coins/coin-4-1.jpg",
+		image_2_src: "images/Content/Coins/coin-4-2.jpg",
 		timer: 300
 	},
 	{
@@ -72,8 +72,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "19th-century",
 		data_material: "bronze",
 		starting_price: "$34.00",
-		image_1_src: "/images/Content/Coins/coin-5-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-5-2.jpg",
+		image_1_src: "images/Content/Coins/coin-5-1.jpg",
+		image_2_src: "images/Content/Coins/coin-5-2.jpg",
 		timer: 150
 	},
 	{
@@ -87,8 +87,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "21st-century",
 		data_material: "gold",
 		starting_price: "$51.50",
-		image_1_src: "/images/Content/Coins/coin-6-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-6-2.jpg",
+		image_1_src: "images/Content/Coins/coin-6-1.jpg",
+		image_2_src: "images/Content/Coins/coin-6-2.jpg",
 		timer: 220
 	},
 	{
@@ -102,8 +102,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "21st-century",
 		data_material: "gold",
 		starting_price: "$52.00",
-		image_1_src: "/images/Content/Coins/coin-7-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-7-2.jpg",
+		image_1_src: "images/Content/Coins/coin-7-1.jpg",
+		image_2_src: "images/Content/Coins/coin-7-2.jpg",
 		timer: 110
 	},
 	{
@@ -117,8 +117,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "19th-century",
 		data_material: "copper",
 		starting_price: "$10.00",
-		image_1_src: "/images/Content/Coins/coin-8-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-8-2.jpg",
+		image_1_src: "images/Content/Coins/coin-8-1.jpg",
+		image_2_src: "images/Content/Coins/coin-8-2.jpg",
 		timer: 50
 	},
 	{
@@ -132,8 +132,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "19th-century",
 		data_material: "bronze",
 		starting_price: "$500.00",
-		image_1_src: "/images/Content/Coins/coin-9-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-9-2.jpg",
+		image_1_src: "images/Content/Coins/coin-9-1.jpg",
+		image_2_src: "images/Content/Coins/coin-9-2.jpg",
 		timer: 80
 	},
 	{
@@ -147,8 +147,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "20th-century",
 		data_material: "gold",
 		starting_price: "$115.00",
-		image_1_src: "/images/Content/Coins/coin-10-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-10-2.jpg",
+		image_1_src: "images/Content/Coins/coin-10-1.jpg",
+		image_2_src: "images/Content/Coins/coin-10-2.jpg",
 		timer: 90
 	},
 	{
@@ -162,8 +162,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "20th-century",
 		data_material: "copper",
 		starting_price: "$20.00",
-		image_1_src: "/images/Content/Coins/coin-11-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-11-2.jpg",
+		image_1_src: "images/Content/Coins/coin-11-1.jpg",
+		image_2_src: "images/Content/Coins/coin-11-2.jpg",
 		timer: 34
 	},
 	{
@@ -177,8 +177,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "18th-century",
 		data_material: "copper",
 		starting_price: "$22.00",
-		image_1_src: "/images/Content/Coins/coin-12-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-12-2.jpg",
+		image_1_src: "images/Content/Coins/coin-12-1.jpg",
+		image_2_src: "images/Content/Coins/coin-12-2.jpg",
 		timer: 12
 	},
 	{
@@ -192,8 +192,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "19th-century",
 		data_material: "bronze",
 		starting_price: "$25.00",
-		image_1_src: "/images/Content/Coins/coin-13-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-13-2.jpg",
+		image_1_src: "images/Content/Coins/coin-13-1.jpg",
+		image_2_src: "images/Content/Coins/coin-13-2.jpg",
 		timer: 260
 	},
 	{
@@ -207,8 +207,8 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "18th-century",
 		data_material: "copper",
 		starting_price: "$18.00",
-		image_1_src: "/images/Content/Coins/coin-14-1.jpg",
-		image_2_src: "/images/Content/Coins/coin-14-2.jpg",
+		image_1_src: "images/Content/Coins/coin-14-1.jpg",
+		image_2_src: "images/Content/Coins/coin-14-2.jpg",
 		timer: 56
 	},
 	{
@@ -220,9 +220,9 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "USA",
 		data_year_of_manufacture: "19th-century",
 		starting_price: "$375.00",
-		image_1_src: "/images/Content/Books/book-1-1.jpg",
-		image_2_src: "/images/Content/Books/book-1-2.jpg",
-		image_3_src: "/images/Content/Books/book-1-3.jpg",
+		image_1_src: "images/Content/Books/book-1-1.jpg",
+		image_2_src: "images/Content/Books/book-1-2.jpg",
+		image_3_src: "images/Content/Books/book-1-3.jpg",
 		timer: 125
 	},
 	{
@@ -234,9 +234,9 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "Japan",
 		data_year_of_manufacture: "19th-century",
 		starting_price: "$1.25",
-		image_1_src: "/images/Content/Books/book-2-1.jpg",
-		image_2_src: "/images/Content/Books/book-2-2.jpg",
-		image_3_src: "/images/Content/Books/book-2-3.jpg",
+		image_1_src: "images/Content/Books/book-2-1.jpg",
+		image_2_src: "images/Content/Books/book-2-2.jpg",
+		image_3_src: "images/Content/Books/book-2-3.jpg",
 		timer: 321
 	},
 	{
@@ -248,9 +248,9 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "USA",
 		data_year_of_manufacture: "19th-century",
 		starting_price: "$250.00",
-		image_1_src: "/images/Content/Books/book-3-1.jpg",
-		image_2_src: "/images/Content/Books/book-3-2.jpg",
-		image_3_src: "/images/Content/Books/book-3-3.jpg",
+		image_1_src: "images/Content/Books/book-3-1.jpg",
+		image_2_src: "images/Content/Books/book-3-2.jpg",
+		image_3_src: "images/Content/Books/book-3-3.jpg",
 		timer: 544
 	},
 	{
@@ -262,9 +262,9 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "France",
 		data_year_of_manufacture: "15th-century",
 		starting_price: "$800.00",
-		image_1_src: "/images/Content/Books/book-4-1.jpg",
-		image_2_src: "/images/Content/Books/book-4-2.jpg",
-		image_3_src: "/images/Content/Books/book-4-3.jpg",
+		image_1_src: "images/Content/Books/book-4-1.jpg",
+		image_2_src: "images/Content/Books/book-4-2.jpg",
+		image_3_src: "images/Content/Books/book-4-3.jpg",
 		timer: 70
 	},
 	{
@@ -276,9 +276,9 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "England",
 		data_year_of_manufacture: "14th-century",
 		starting_price: "$8000.00",
-		image_1_src: "/images/Content/Books/book-5-1.jpg",
-		image_2_src: "/images/Content/Books/book-5-2.jpg",
-		image_3_src: "/images/Content/Books/book-5-3.jpg",
+		image_1_src: "images/Content/Books/book-5-1.jpg",
+		image_2_src: "images/Content/Books/book-5-2.jpg",
+		image_3_src: "images/Content/Books/book-5-3.jpg",
 		timer: 90
 	},
 	{
@@ -292,9 +292,9 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "20th-century",
 		data_material: "lacquer",
 		starting_price: "$27.00",
-		image_1_src: "/images/Content/Antique/antique-2-1.jpg",
-		image_2_src: "/images/Content/Antique/antique-2-2.jpg",
-		image_3_src: "/images/Content/Antique/antique-2-3.jpg",
+		image_1_src: "images/Content/Antique/antique-2-1.jpg",
+		image_2_src: "images/Content/Antique/antique-2-2.jpg",
+		image_3_src: "images/Content/Antique/antique-2-3.jpg",
 		timer: 150
 	},
 	{
@@ -308,9 +308,9 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "17th-century",
 		data_material: "porcelain",
 		starting_price: "$400.00",
-		image_1_src: "/images/Content/Antique/antique-3-1.jpg",
-		image_2_src: "/images/Content/Antique/antique-3-2.jpg",
-		image_3_src: "/images/Content/Antique/antique-3-3.jpg",
+		image_1_src: "images/Content/Antique/antique-3-1.jpg",
+		image_2_src: "images/Content/Antique/antique-3-2.jpg",
+		image_3_src: "images/Content/Antique/antique-3-3.jpg",
 		timer: 112
 	},
 	{
@@ -324,9 +324,9 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "16th-century",
 		data_material: "porcelain",
 		starting_price: "$550.00",
-		image_1_src: "/images/Content/Antique/antique-4-1.jpg",
-		image_2_src: "/images/Content/Antique/antique-4-2.jpg",
-		image_3_src: "/images/Content/Antique/antique-4-3.jpg",
+		image_1_src: "images/Content/Antique/antique-4-1.jpg",
+		image_2_src: "images/Content/Antique/antique-4-2.jpg",
+		image_3_src: "images/Content/Antique/antique-4-3.jpg",
 		timer: 234
 	},
 	{
@@ -340,9 +340,9 @@ var arrayOfInitialContent = [
 		data_year_of_manufacture: "18th-century",
 		data_material: "porcelain",
 		starting_price: "$370.00",
-		image_1_src: "/images/Content/Antique/antique-5-1.jpg",
-		image_2_src: "/images/Content/Antique/antique-5-2.jpg",
-		image_3_src: "/images/Content/Antique/antique-5-3.jpg",
+		image_1_src: "images/Content/Antique/antique-5-1.jpg",
+		image_2_src: "images/Content/Antique/antique-5-2.jpg",
+		image_3_src: "images/Content/Antique/antique-5-3.jpg",
 		timer: 21
 	},
 	{
@@ -354,7 +354,7 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "Spain",
 		data_year_of_manufacture: "20th-century",
 		starting_price: "$2000.00",
-		image_1_src: "/images/Content/Paintings/painting-1-1.jpg",
+		image_1_src: "images/Content/Paintings/painting-1-1.jpg",
 		timer: 16
 	},
 	{
@@ -366,7 +366,7 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "Spain",
 		data_year_of_manufacture: "20th-century",
 		starting_price: "$3000.00",
-		image_1_src: "/images/Content/Paintings/painting-2-1.jpg",
+		image_1_src: "images/Content/Paintings/painting-2-1.jpg",
 		timer: 75
 	},
 	{
@@ -378,7 +378,7 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "Europe",
 		data_year_of_manufacture: "19th-century",
 		starting_price: "$150.00",
-		image_1_src: "/images/Content/Paintings/painting-3-1.jpg",
+		image_1_src: "images/Content/Paintings/painting-3-1.jpg",
 		timer: 61
 	},
 	{
@@ -390,7 +390,7 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "France",
 		data_year_of_manufacture: "20th-century",
 		starting_price: "$200.00",
-		image_1_src: "/images/Content/Paintings/painting-4-1.jpg",
+		image_1_src: "images/Content/Paintings/painting-4-1.jpg",
 		timer: 38
 	},
 	{
@@ -402,7 +402,7 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "France",
 		data_year_of_manufacture: "19th-century",
 		starting_price: "$400.00",
-		image_1_src: "/images/Content/Paintings/painting-5-1.jpg",
+		image_1_src: "images/Content/Paintings/painting-5-1.jpg",
 		timer: 74
 	},
 	{
@@ -414,7 +414,7 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "Liechtenstein",
 		data_year_of_manufacture: "20th-century",
 		starting_price: "$1.00",
-		image_1_src: "/images/Content/Postage-stamps/postage-stamp-1-1.jpg",
+		image_1_src: "images/Content/Postage-stamps/postage-stamp-1-1.jpg",
 		timer: 101
 	},
 	{
@@ -426,7 +426,7 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "Australia",
 		data_year_of_manufacture: "20th-century",
 		starting_price: "$10.00",
-		image_1_src: "/images/Content/Postage-stamps/postage-stamp-2-1.jpg",
+		image_1_src: "images/Content/Postage-stamps/postage-stamp-2-1.jpg",
 		timer: 32
 	},
 	{
@@ -438,7 +438,7 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "San-Marino",
 		data_year_of_manufacture: "19th-century",
 		starting_price: "$70.00",
-		image_1_src: "/images/Content/Postage-stamps/postage-stamp-3-1.jpg",
+		image_1_src: "images/Content/Postage-stamps/postage-stamp-3-1.jpg",
 		timer: 9
 	},
 	{
@@ -450,7 +450,7 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "Australia",
 		data_year_of_manufacture: "19th-century",
 		starting_price: "$1.50",
-		image_1_src: "/images/Content/Postage-stamps/postage-stamp-4-1.jpg",
+		image_1_src: "images/Content/Postage-stamps/postage-stamp-4-1.jpg",
 		timer: 10
 	},
 	{
@@ -462,7 +462,7 @@ var arrayOfInitialContent = [
 		data_country_of_origin: "USSR",
 		data_year_of_manufacture: "20th-century",
 		starting_price: "$1.00",
-		image_1_src: "/images/Content/Postage-stamps/postage-stamp-5-1.jpg",
+		image_1_src: "images/Content/Postage-stamps/postage-stamp-5-1.jpg",
 		timer: 58
 	}
 ];
